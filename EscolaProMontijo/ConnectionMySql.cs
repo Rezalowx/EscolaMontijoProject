@@ -120,24 +120,20 @@ namespace EscolaProMontijo
             }
         }
 
-        public void PutQueryIntoLastRow(string sqlQuery, DataGridView dgv, BindingSource bs, string[] array)
+        public void PutQueryIntoLastRow(DataGridView dgv, BindingSource bs, string[] array)
         {
 
 
-            DataTable Dt = new DataTable();
-            Dt.Columns.Add("name");
-            Dt.Columns.Add("email");
+            DataTable dataTable = (DataTable)bs.DataSource;
 
-            DataRow dr = Dt.NewRow();
-            DataGridViewRow dgvR = (DataGridViewRow)dgv.CurrentRow.Clone();
-            dr[0] = dgvR.Cells[0].Clone();
-            dr[1] = dgvR.Cells[1].Clone();
+            DataRow newRow = dataTable.NewRow();
 
-            Dt.Rows.Add(dgvR);
-            dgv.DataSource = Dt;
+            newRow[0] = array[0];
+            newRow[1] = array[1];
+            newRow[2] = array[2];
+            newRow[3] = array[3];
 
-
-
+            dataTable.Rows.Add(newRow);
 
 
 

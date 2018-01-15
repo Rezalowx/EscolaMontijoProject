@@ -72,7 +72,7 @@ namespace EscolaProMontijo
             string sqlQuery = "SELECT company.name FROM company, sector WHERE company.idSector = sector.id AND sector.name ='"+parameter+"'";
             connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxCompany, "name");
         }
-        private void bt_Add_Click(object sender, EventArgs e)
+        private void bt_Add_Click(object sender, EventArgs e)  
         {
 
             connectionMySql connectionDB = new connectionMySql();
@@ -80,15 +80,10 @@ namespace EscolaProMontijo
 
             string addCompany = comboBoxCompany.Text;
             string sqlQuery = "SELECT company.name, company.email, company.numero, company.address FROM company where company.name ='" + addCompany + "'";
-            /*dataGridViewList.DataSource = null;
-            dataGridViewList.ColumnCount = 4;
-            dataGridViewList.Columns[0].Name = "name";
-            dataGridViewList.Columns[1].Name = "email";
-            dataGridViewList.Columns[2].Name = "numero";
-            dataGridViewList.Columns[3].Name = "address";*/
+        
 
 
-            connectionDB.PutQueryIntoLastRow(sqlQuery,dataGridViewList, bindingSourceList, connectionDB.getInfosinStringArrayOfCompany(addCompany));
+            connectionDB.PutQueryIntoLastRow(dataGridViewList, bindingSourceList, connectionDB.getInfosinStringArrayOfCompany(addCompany));
             
             
             
