@@ -79,19 +79,45 @@ namespace EscolaProMontijo
             connectionDB.ConnectionMySql();
 
             string addCompany = comboBoxCompany.Text;
-            string sqlQuery = "SELECT company.name, company.email, company.numero, company.address FROM company where company.name ='" + addCompany + "'";
-        
+            string[] arrayNewRow = connectionDB.getInfosinStringArrayOfCompany(addCompany);
+            bool identicals = false;
+           
+            if (dataGridViewList.RowCount == 0)
+            {
+                string sqlQuery = "SELECT company.name, company.email, company.numero, company.address FROM company where company.name ='" + addCompany + "'";
+                connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
+            }
 
 
-            connectionDB.PutQueryIntoLastRow(dataGridViewList, bindingSourceList, connectionDB.getInfosinStringArrayOfCompany(addCompany));
-            
-            
+            else
+            {
+                for (int i = 0; i < dataGridViewList.Rows.Count - 1; i++) // FIX THIS
+                {
+                    string emailtocheck = dataGridViewList.Rows[i].Cells[1].Value.ToString();
+                    if (emailtocheck == arrayNewRow[1])
+                    {
+                        MessageBox.Show("2 emails are identicals, check it please");
+                        identicals = true;
+                        break;
+                    }
+                }
+                if (identicals == false)
+                {
+                   
+                    connectionDB.PutQueryIntoLastRow(dataGridViewList, bindingSourceList, arrayNewRow);
+                }
+
+            }
             
            
             
        }
         private void bt_Delete_Click(object sender, EventArgs e)
         {
+            connectionMySql connectionDB = new connectionMySql();
+            connectionDB.ConnectionMySql();
+
+            connectionDB.DeleteCompanyInDatagridView(comboBoxCompany.Text, dataGridViewList);
 
         }
 
@@ -109,13 +135,33 @@ namespace EscolaProMontijo
             connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
         }
 
-        private void addAListToolStripMenuCreateList_Click(object sender, EventArgs e)
+        private void viewListsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Create_a_list cl = new Create_a_list();
-            cl.ShowDialog();
+
         }
 
-       
-       
+        private void viewListsToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ViewList vL = new ViewList();
+            vL.ShowDialog();
+        }
+
+        private void viewCompaniesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addACompanyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddACompany addCompany = new AddACompany();
+            addCompany.ShowDialog();
+        }
+
+        private void CreateListsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Create_a_list createAList = new Create_a_list();
+            createAList.ShowDialog();
+
+        }
     }
 }

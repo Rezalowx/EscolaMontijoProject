@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.bt_Send = new System.Windows.Forms.Button();
@@ -48,15 +51,18 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addACompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewListsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addAListToolStripMenuCreateList = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewListsToolStripMenuViewLists = new System.Windows.Forms.ToolStripMenuItem();
+            this.addListsToolStripMenuViewLists = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewListsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuAddACompany = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuCreateASignature = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelCompanyTo = new System.Windows.Forms.Label();
             this.labelSector = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.bindingSourceList = new System.Windows.Forms.BindingSource(this.components);
+            this.viewListsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewCompaniesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -65,15 +71,39 @@
             // 
             // dataGridViewList
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle36;
             this.dataGridViewList.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewList.Location = new System.Drawing.Point(39, 361);
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle38;
+            this.dataGridViewList.Location = new System.Drawing.Point(39, 371);
             this.dataGridViewList.Name = "dataGridViewList";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewList.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewList.Size = new System.Drawing.Size(933, 342);
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewList.RowsDefaultCellStyle = dataGridViewCellStyle40;
+            this.dataGridViewList.Size = new System.Drawing.Size(933, 438);
             this.dataGridViewList.TabIndex = 0;
             // 
             // bt_Send
@@ -90,7 +120,7 @@
             // bt_Delete
             // 
             this.bt_Delete.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_Delete.Location = new System.Drawing.Point(1181, 526);
+            this.bt_Delete.Location = new System.Drawing.Point(1210, 604);
             this.bt_Delete.Name = "bt_Delete";
             this.bt_Delete.Size = new System.Drawing.Size(75, 23);
             this.bt_Delete.TabIndex = 2;
@@ -101,7 +131,7 @@
             // bt_Add
             // 
             this.bt_Add.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_Add.Location = new System.Drawing.Point(1022, 526);
+            this.bt_Add.Location = new System.Drawing.Point(1051, 604);
             this.bt_Add.Name = "bt_Add";
             this.bt_Add.Size = new System.Drawing.Size(75, 23);
             this.bt_Add.TabIndex = 3;
@@ -113,7 +143,7 @@
             // 
             this.comboBoxSector.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSector.FormattingEnabled = true;
-            this.comboBoxSector.Location = new System.Drawing.Point(1022, 439);
+            this.comboBoxSector.Location = new System.Drawing.Point(1051, 512);
             this.comboBoxSector.Name = "comboBoxSector";
             this.comboBoxSector.Size = new System.Drawing.Size(234, 24);
             this.comboBoxSector.TabIndex = 4;
@@ -123,7 +153,7 @@
             // 
             this.comboBoxCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxCompany.FormattingEnabled = true;
-            this.comboBoxCompany.Location = new System.Drawing.Point(1022, 482);
+            this.comboBoxCompany.Location = new System.Drawing.Point(1051, 554);
             this.comboBoxCompany.Name = "comboBoxCompany";
             this.comboBoxCompany.Size = new System.Drawing.Size(234, 24);
             this.comboBoxCompany.TabIndex = 5;
@@ -191,13 +221,12 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.addAListToolStripMenuCreateList,
-            this.viewListsToolStripMenuViewLists,
+            this.addListsToolStripMenuViewLists,
             this.ToolStripMenuAddACompany,
             this.ToolStripMenuCreateASignature});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1354, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1358, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -223,24 +252,37 @@
             this.viewListsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
             this.viewListsToolStripMenuItem.Text = "Release notes";
             // 
-            // addAListToolStripMenuCreateList
+            // addListsToolStripMenuViewLists
             // 
-            this.addAListToolStripMenuCreateList.Name = "addAListToolStripMenuCreateList";
-            this.addAListToolStripMenuCreateList.Size = new System.Drawing.Size(80, 20);
-            this.addAListToolStripMenuCreateList.Text = "Create a list";
-            this.addAListToolStripMenuCreateList.Click += new System.EventHandler(this.addAListToolStripMenuCreateList_Click);
+            this.addListsToolStripMenuViewLists.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewListsToolStripMenuItem1,
+            this.viewListsToolStripMenuItem2});
+            this.addListsToolStripMenuViewLists.Name = "addListsToolStripMenuViewLists";
+            this.addListsToolStripMenuViewLists.Size = new System.Drawing.Size(42, 20);
+            this.addListsToolStripMenuViewLists.Text = "Lists";
             // 
-            // viewListsToolStripMenuViewLists
+            // viewListsToolStripMenuItem1
             // 
-            this.viewListsToolStripMenuViewLists.Name = "viewListsToolStripMenuViewLists";
-            this.viewListsToolStripMenuViewLists.Size = new System.Drawing.Size(67, 20);
-            this.viewListsToolStripMenuViewLists.Text = "View lists";
+            this.viewListsToolStripMenuItem1.Name = "viewListsToolStripMenuItem1";
+            this.viewListsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.viewListsToolStripMenuItem1.Text = "Create a list";
+            this.viewListsToolStripMenuItem1.Click += new System.EventHandler(this.CreateListsToolStripMenuItem1_Click);
             // 
             // ToolStripMenuAddACompany
             // 
+            this.ToolStripMenuAddACompany.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifyToolStripMenuItem,
+            this.viewCompaniesToolStripMenuItem});
             this.ToolStripMenuAddACompany.Name = "ToolStripMenuAddACompany";
-            this.ToolStripMenuAddACompany.Size = new System.Drawing.Size(103, 20);
-            this.ToolStripMenuAddACompany.Text = "Add a company";
+            this.ToolStripMenuAddACompany.Size = new System.Drawing.Size(79, 20);
+            this.ToolStripMenuAddACompany.Text = "Companies";
+            // 
+            // modifyToolStripMenuItem
+            // 
+            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.modifyToolStripMenuItem.Text = "Add a company";
+            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.addACompanyToolStripMenuItem_Click);
             // 
             // ToolStripMenuCreateASignature
             // 
@@ -264,7 +306,7 @@
             // 
             this.labelCompanyTo.AutoSize = true;
             this.labelCompanyTo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCompanyTo.Location = new System.Drawing.Point(1019, 401);
+            this.labelCompanyTo.Location = new System.Drawing.Point(1048, 469);
             this.labelCompanyTo.Name = "labelCompanyTo";
             this.labelCompanyTo.Size = new System.Drawing.Size(176, 16);
             this.labelCompanyTo.TabIndex = 14;
@@ -274,7 +316,7 @@
             // 
             this.labelSector.AutoSize = true;
             this.labelSector.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSector.Location = new System.Drawing.Point(1262, 442);
+            this.labelSector.Location = new System.Drawing.Point(1295, 515);
             this.labelSector.Name = "labelSector";
             this.labelSector.Size = new System.Drawing.Size(51, 16);
             this.labelSector.TabIndex = 15;
@@ -284,11 +326,25 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1262, 485);
+            this.label3.Location = new System.Drawing.Point(1291, 557);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 16);
             this.label3.TabIndex = 16;
             this.label3.Text = "Company";
+            // 
+            // viewListsToolStripMenuItem2
+            // 
+            this.viewListsToolStripMenuItem2.Name = "viewListsToolStripMenuItem2";
+            this.viewListsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.viewListsToolStripMenuItem2.Text = "View lists";
+            this.viewListsToolStripMenuItem2.Click += new System.EventHandler(this.viewListsToolStripMenuItem2_Click);
+            // 
+            // viewCompaniesToolStripMenuItem
+            // 
+            this.viewCompaniesToolStripMenuItem.Name = "viewCompaniesToolStripMenuItem";
+            this.viewCompaniesToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.viewCompaniesToolStripMenuItem.Text = "View companies";
+            this.viewCompaniesToolStripMenuItem.Click += new System.EventHandler(this.viewCompaniesToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -296,7 +352,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1354, 707);
+            this.ClientSize = new System.Drawing.Size(1354, 899);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelSector);
             this.Controls.Add(this.labelCompanyTo);
@@ -317,7 +373,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "Form1";
+            this.Text = " ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).EndInit();
@@ -352,11 +408,14 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewListsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addACompanyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addAListToolStripMenuCreateList;
-        private System.Windows.Forms.ToolStripMenuItem viewListsToolStripMenuViewLists;
+        private System.Windows.Forms.ToolStripMenuItem addListsToolStripMenuViewLists;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuAddACompany;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuCreateASignature;
         private System.Windows.Forms.BindingSource bindingSourceList;
+        private System.Windows.Forms.ToolStripMenuItem viewListsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewListsToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem viewCompaniesToolStripMenuItem;
     }
 }
 
