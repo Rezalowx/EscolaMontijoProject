@@ -19,7 +19,11 @@ namespace EscolaProMontijo
 
         private void AddACompany_Load(object sender, EventArgs e)
         {
+            connectionMySql connectionDB = new connectionMySql();
+            connectionDB.ConnectionMySql();
 
+            string sqlQuery = "SELECT name FROM sector";
+            connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxSector, "name");
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -28,6 +32,23 @@ namespace EscolaProMontijo
         }
 
         private void buttonSaveCompany_Click(object sender, EventArgs e)
+        {
+
+            connectionMySql connectionDB = new connectionMySql();
+            connectionDB.ConnectionMySql();
+
+            try
+            {
+                connectionDB.addNewCompany(connectionDB.getIdSectorFromName(comboBoxSector.Text), textBoxNameCompany.Text, textBoxEmailCompany.Text, textBoxNumero.Text, textBoxAddressCompany.Text);
+                MessageBox.Show("Database updated !");
+            }
+            catch
+            {
+                MessageBox.Show("Error, database is not updated");
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

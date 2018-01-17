@@ -37,14 +37,16 @@
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelNumero = new System.Windows.Forms.Label();
             this.labeladdress = new System.Windows.Forms.Label();
+            this.comboBoxSector = new System.Windows.Forms.ComboBox();
+            this.labelSector = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonSaveCompany
             // 
             this.buttonSaveCompany.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSaveCompany.Location = new System.Drawing.Point(413, 189);
+            this.buttonSaveCompany.Location = new System.Drawing.Point(495, 194);
             this.buttonSaveCompany.Name = "buttonSaveCompany";
-            this.buttonSaveCompany.Size = new System.Drawing.Size(75, 27);
+            this.buttonSaveCompany.Size = new System.Drawing.Size(150, 26);
             this.buttonSaveCompany.TabIndex = 0;
             this.buttonSaveCompany.Text = "Save";
             this.buttonSaveCompany.UseVisualStyleBackColor = true;
@@ -86,42 +88,62 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelName.Location = new System.Drawing.Point(47, 53);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(47, 18);
+            this.labelName.Size = new System.Drawing.Size(51, 18);
             this.labelName.TabIndex = 5;
             this.labelName.Text = "Name";
             // 
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmail.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEmail.Location = new System.Drawing.Point(266, 53);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(41, 18);
+            this.labelEmail.Size = new System.Drawing.Size(49, 18);
             this.labelEmail.TabIndex = 6;
             this.labelEmail.Text = "Email";
             // 
             // labelNumero
             // 
             this.labelNumero.AutoSize = true;
-            this.labelNumero.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumero.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNumero.Location = new System.Drawing.Point(492, 53);
             this.labelNumero.Name = "labelNumero";
-            this.labelNumero.Size = new System.Drawing.Size(60, 18);
+            this.labelNumero.Size = new System.Drawing.Size(67, 18);
             this.labelNumero.TabIndex = 7;
             this.labelNumero.Text = "Numero";
             // 
             // labeladdress
             // 
             this.labeladdress.AutoSize = true;
-            this.labeladdress.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labeladdress.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labeladdress.Location = new System.Drawing.Point(717, 53);
             this.labeladdress.Name = "labeladdress";
-            this.labeladdress.Size = new System.Drawing.Size(60, 18);
+            this.labeladdress.Size = new System.Drawing.Size(68, 18);
             this.labeladdress.TabIndex = 8;
             this.labeladdress.Text = "Address";
+            // 
+            // comboBoxSector
+            // 
+            this.comboBoxSector.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxSector.FormattingEnabled = true;
+            this.comboBoxSector.Location = new System.Drawing.Point(269, 194);
+            this.comboBoxSector.Name = "comboBoxSector";
+            this.comboBoxSector.Size = new System.Drawing.Size(150, 26);
+            this.comboBoxSector.TabIndex = 9;
+            this.comboBoxSector.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // labelSector
+            // 
+            this.labelSector.AutoSize = true;
+            this.labelSector.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSector.Location = new System.Drawing.Point(266, 173);
+            this.labelSector.Name = "labelSector";
+            this.labelSector.Size = new System.Drawing.Size(57, 18);
+            this.labelSector.TabIndex = 10;
+            this.labelSector.Text = "Sector";
             // 
             // AddACompany
             // 
@@ -129,6 +151,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(955, 306);
+            this.Controls.Add(this.labelSector);
+            this.Controls.Add(this.comboBoxSector);
             this.Controls.Add(this.labeladdress);
             this.Controls.Add(this.labelNumero);
             this.Controls.Add(this.labelEmail);
@@ -139,6 +163,7 @@
             this.Controls.Add(this.textBoxNameCompany);
             this.Controls.Add(this.buttonSaveCompany);
             this.Name = "AddACompany";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddACompany";
             this.Load += new System.EventHandler(this.AddACompany_Load);
             this.ResumeLayout(false);
@@ -157,5 +182,7 @@
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelNumero;
         private System.Windows.Forms.Label labeladdress;
+        private System.Windows.Forms.ComboBox comboBoxSector;
+        private System.Windows.Forms.Label labelSector;
     }
 }

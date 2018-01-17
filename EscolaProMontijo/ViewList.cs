@@ -82,6 +82,7 @@ namespace EscolaProMontijo
             try
             {
                 dataAdapter.Update(ds, "bddmontijotest");
+                MessageBox.Show("Datase updated");
             }
             catch
             {

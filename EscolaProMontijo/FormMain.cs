@@ -44,7 +44,7 @@ namespace EscolaProMontijo
                 sqlCommand = "SELECT name FROM sector";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxSector, "name");
 
-                sqlCommand = "SELECT name from company";
+                sqlCommand = "SELECT DISTINCT name from company";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxCompany, "name");
 
             }
@@ -79,7 +79,8 @@ namespace EscolaProMontijo
             connectionDB.ConnectionMySql();
 
             string addCompany = comboBoxCompany.Text;
-            string[] arrayNewRow = connectionDB.getInfosinStringArrayOfCompany(addCompany);
+            string emailCheck = comboBoxEmail.Text;
+            string[] arrayNewRow = connectionDB.getInfosinStringArrayOfCompany(addCompany, emailCheck);
             bool identicals = false;
            
             if (dataGridViewList.RowCount == 0)
@@ -91,7 +92,7 @@ namespace EscolaProMontijo
 
             else
             {
-                for (int i = 0; i < dataGridViewList.Rows.Count - 1; i++) // FIX THIS
+                for (int i = 0; i < dataGridViewList.Rows.Count - 1; i++) 
                 {
                     string emailtocheck = dataGridViewList.Rows[i].Cells[1].Value.ToString();
                     if (emailtocheck == arrayNewRow[1])
@@ -117,7 +118,7 @@ namespace EscolaProMontijo
             connectionMySql connectionDB = new connectionMySql();
             connectionDB.ConnectionMySql();
 
-            connectionDB.DeleteCompanyInDatagridView(comboBoxCompany.Text, dataGridViewList);
+            connectionDB.DeleteCompanyInDatagridView(comboBoxCompany.Text, comboBoxEmail.Text, dataGridViewList);
 
         }
 
@@ -127,9 +128,7 @@ namespace EscolaProMontijo
             connectionMySql connectionDB = new connectionMySql();
             connectionDB.ConnectionMySql();
             
-            
-            
-            
+ 
             string parameter = comboBoxChooseList.Text;
             string sqlQuery = "SELECT c.name, c.email, c.numero, address FROM list l JOIN listcompany lc ON l.id = lc.idList JOIN company c ON c.id = lc.idCompany WHERE l.name ='" + parameter + "'"; 
             connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
@@ -162,6 +161,32 @@ namespace EscolaProMontijo
             Create_a_list createAList = new Create_a_list();
             createAList.ShowDialog();
 
+        }
+
+        private void deleteACompanyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteACompanyForm deletecompany = new DeleteACompanyForm();
+            deletecompany.ShowDialog();
+        }
+
+        private void comboBoxCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            connectionMySql connectionDB = new connectionMySql();
+            connectionDB.ConnectionMySql();
+
+            comboBoxEmail.Items.Clear();
+            comboBoxEmail.Visible = false;
+            labelEmail.Visible = false;
+
+            string sqlQuery = "SELECT email from company WHERE name='" + comboBoxCompany.Text + "'";
+            connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxEmail, "email");
+            comboBoxEmail.Text = Convert.ToString(comboBoxEmail.Items[0]);
+
+            if (comboBoxEmail.Items.Count > 1)
+            {
+                comboBoxEmail.Visible = true;
+                labelEmail.Visible = true;
+            }
         }
     }
 }

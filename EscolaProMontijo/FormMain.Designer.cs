@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.bt_Send = new System.Windows.Forms.Button();
@@ -53,16 +53,19 @@
             this.viewListsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addListsToolStripMenuViewLists = new System.Windows.Forms.ToolStripMenuItem();
             this.viewListsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewListsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuAddACompany = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewCompaniesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuCreateASignature = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelCompanyTo = new System.Windows.Forms.Label();
             this.labelSector = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelCompany = new System.Windows.Forms.Label();
+            this.deleteACompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSourceList = new System.Windows.Forms.BindingSource(this.components);
-            this.viewListsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewCompaniesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBoxEmail = new System.Windows.Forms.ComboBox();
+            this.labelEmail = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,38 +74,38 @@
             // 
             // dataGridViewList
             // 
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewList.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle37.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle38.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle38.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewList.Location = new System.Drawing.Point(39, 371);
             this.dataGridViewList.Name = "dataGridViewList";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle39.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewList.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewList.RowsDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewList.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewList.Size = new System.Drawing.Size(933, 438);
             this.dataGridViewList.TabIndex = 0;
             // 
@@ -157,6 +160,7 @@
             this.comboBoxCompany.Name = "comboBoxCompany";
             this.comboBoxCompany.Size = new System.Drawing.Size(234, 24);
             this.comboBoxCompany.TabIndex = 5;
+            this.comboBoxCompany.SelectedIndexChanged += new System.EventHandler(this.comboBoxCompany_SelectedIndexChanged);
             // 
             // comboBoxSignature
             // 
@@ -264,15 +268,23 @@
             // viewListsToolStripMenuItem1
             // 
             this.viewListsToolStripMenuItem1.Name = "viewListsToolStripMenuItem1";
-            this.viewListsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.viewListsToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
             this.viewListsToolStripMenuItem1.Text = "Create a list";
             this.viewListsToolStripMenuItem1.Click += new System.EventHandler(this.CreateListsToolStripMenuItem1_Click);
+            // 
+            // viewListsToolStripMenuItem2
+            // 
+            this.viewListsToolStripMenuItem2.Name = "viewListsToolStripMenuItem2";
+            this.viewListsToolStripMenuItem2.Size = new System.Drawing.Size(135, 22);
+            this.viewListsToolStripMenuItem2.Text = "View lists";
+            this.viewListsToolStripMenuItem2.Click += new System.EventHandler(this.viewListsToolStripMenuItem2_Click);
             // 
             // ToolStripMenuAddACompany
             // 
             this.ToolStripMenuAddACompany.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modifyToolStripMenuItem,
-            this.viewCompaniesToolStripMenuItem});
+            this.viewCompaniesToolStripMenuItem,
+            this.deleteACompanyToolStripMenuItem});
             this.ToolStripMenuAddACompany.Name = "ToolStripMenuAddACompany";
             this.ToolStripMenuAddACompany.Size = new System.Drawing.Size(79, 20);
             this.ToolStripMenuAddACompany.Text = "Companies";
@@ -280,9 +292,16 @@
             // modifyToolStripMenuItem
             // 
             this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
-            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.modifyToolStripMenuItem.Text = "Add a company";
             this.modifyToolStripMenuItem.Click += new System.EventHandler(this.addACompanyToolStripMenuItem_Click);
+            // 
+            // viewCompaniesToolStripMenuItem
+            // 
+            this.viewCompaniesToolStripMenuItem.Name = "viewCompaniesToolStripMenuItem";
+            this.viewCompaniesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.viewCompaniesToolStripMenuItem.Text = "View companies";
+            this.viewCompaniesToolStripMenuItem.Click += new System.EventHandler(this.viewCompaniesToolStripMenuItem_Click);
             // 
             // ToolStripMenuCreateASignature
             // 
@@ -316,35 +335,49 @@
             // 
             this.labelSector.AutoSize = true;
             this.labelSector.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSector.Location = new System.Drawing.Point(1295, 515);
+            this.labelSector.Location = new System.Drawing.Point(1291, 515);
             this.labelSector.Name = "labelSector";
             this.labelSector.Size = new System.Drawing.Size(51, 16);
             this.labelSector.TabIndex = 15;
             this.labelSector.Text = "Sector";
             // 
-            // label3
+            // labelCompany
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1291, 557);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 16);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Company";
+            this.labelCompany.AutoSize = true;
+            this.labelCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCompany.Location = new System.Drawing.Point(1291, 557);
+            this.labelCompany.Name = "labelCompany";
+            this.labelCompany.Size = new System.Drawing.Size(67, 16);
+            this.labelCompany.TabIndex = 16;
+            this.labelCompany.Text = "Company";
             // 
-            // viewListsToolStripMenuItem2
+            // deleteACompanyToolStripMenuItem
             // 
-            this.viewListsToolStripMenuItem2.Name = "viewListsToolStripMenuItem2";
-            this.viewListsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.viewListsToolStripMenuItem2.Text = "View lists";
-            this.viewListsToolStripMenuItem2.Click += new System.EventHandler(this.viewListsToolStripMenuItem2_Click);
+            this.deleteACompanyToolStripMenuItem.Name = "deleteACompanyToolStripMenuItem";
+            this.deleteACompanyToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.deleteACompanyToolStripMenuItem.Text = "Delete a company";
+            this.deleteACompanyToolStripMenuItem.Click += new System.EventHandler(this.deleteACompanyToolStripMenuItem_Click);
             // 
-            // viewCompaniesToolStripMenuItem
+            // comboBoxEmail
             // 
-            this.viewCompaniesToolStripMenuItem.Name = "viewCompaniesToolStripMenuItem";
-            this.viewCompaniesToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.viewCompaniesToolStripMenuItem.Text = "View companies";
-            this.viewCompaniesToolStripMenuItem.Click += new System.EventHandler(this.viewCompaniesToolStripMenuItem_Click);
+            this.comboBoxEmail.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEmail.FormattingEnabled = true;
+            this.comboBoxEmail.Location = new System.Drawing.Point(1051, 669);
+            this.comboBoxEmail.Name = "comboBoxEmail";
+            this.comboBoxEmail.Size = new System.Drawing.Size(234, 24);
+            this.comboBoxEmail.TabIndex = 17;
+            this.comboBoxEmail.Visible = false;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmail.Location = new System.Drawing.Point(1291, 670);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(40, 16);
+            this.labelEmail.TabIndex = 18;
+            this.labelEmail.Text = "Email";
+            this.labelEmail.Visible = false;
             // 
             // FormMain
             // 
@@ -352,8 +385,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1354, 899);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(1354, 882);
+            this.Controls.Add(this.labelEmail);
+            this.Controls.Add(this.comboBoxEmail);
+            this.Controls.Add(this.labelCompany);
             this.Controls.Add(this.labelSector);
             this.Controls.Add(this.labelCompanyTo);
             this.Controls.Add(this.pictureBox1);
@@ -404,7 +439,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelCompanyTo;
         private System.Windows.Forms.Label labelSector;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelCompany;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewListsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addACompanyToolStripMenuItem;
@@ -416,6 +451,9 @@
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewListsToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem viewCompaniesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteACompanyToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBoxEmail;
+        private System.Windows.Forms.Label labelEmail;
     }
 }
 
