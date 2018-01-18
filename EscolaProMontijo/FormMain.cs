@@ -12,6 +12,9 @@ namespace EscolaProMontijo
 {
     public partial class FormMain : Form
     {
+        connectionMySql connectionDB = new connectionMySql();
+        
+
         public FormMain()
         {
             
@@ -31,7 +34,7 @@ namespace EscolaProMontijo
             
             try
             {
-                connectionMySql connectionDB = new connectionMySql();
+                
                 connectionDB.ConnectionMySql();
 
                 
@@ -65,49 +68,60 @@ namespace EscolaProMontijo
 
         private void comboBoxSector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            connectionMySql connectionDB = new connectionMySql();
+            
             connectionDB.ConnectionMySql();
             comboBoxCompany.Items.Clear();
             string parameter = comboBoxSector.Text;
-            string sqlQuery = "SELECT company.name FROM company, sector WHERE company.idSector = sector.id AND sector.name ='"+parameter+"'";
+            string sqlQuery = "SELECT DISTINCT company.name FROM company, sector WHERE company.idSector = sector.id AND sector.name ='"+parameter+"'";
             connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxCompany, "name");
         }
         private void bt_Add_Click(object sender, EventArgs e)  
         {
 
-            connectionMySql connectionDB = new connectionMySql();
-            connectionDB.ConnectionMySql();
-
-            string addCompany = comboBoxCompany.Text;
-            string emailCheck = comboBoxEmail.Text;
-            string[] arrayNewRow = connectionDB.getInfosinStringArrayOfCompany(addCompany, emailCheck);
-            bool identicals = false;
-           
-            if (dataGridViewList.RowCount == 0)
+            try
             {
-                string sqlQuery = "SELECT company.name, company.email, company.numero, company.address FROM company where company.name ='" + addCompany + "'";
-                connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
-            }
 
+                connectionDB.ConnectionMySql();
 
-            else
-            {
-                for (int i = 0; i < dataGridViewList.Rows.Count - 1; i++) 
+                string addCompany = comboBoxCompany.Text;
+                string emailCheck = comboBoxEmail.Text;
+                string querysql = "SELECT c.name, c.email, c.numero, c.address FROM company c where name ='" + addCompany + "' AND c.email ='" + emailCheck + "'";
+                List<string[]> ListNewRow = connectionDB.getInfosinStringArrayOfQuery(querysql);
+                bool identicals = false;
+
+                if (dataGridViewList.RowCount == 0)
                 {
-                    string emailtocheck = dataGridViewList.Rows[i].Cells[1].Value.ToString();
-                    if (emailtocheck == arrayNewRow[1])
+                    string sqlQuery = "SELECT company.name, company.email, company.numero, company.address FROM company where company.name ='" + addCompany + "'AND company.email ='" + emailCheck + "'";
+                    connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
+                }
+
+
+                else
+                {
+                    for (int i = 0; i < dataGridViewList.Rows.Count - 1; i++)
                     {
-                        MessageBox.Show("2 emails are identicals, check it please");
-                        identicals = true;
-                        break;
-                    }
-                }
-                if (identicals == false)
-                {
-                   
-                    connectionDB.PutQueryIntoLastRow(dataGridViewList, bindingSourceList, arrayNewRow);
-                }
+                        int nbNewRows = ListNewRow.Count;
+                        MessageBox.Show(nbNewRows.ToString());
+                        string emailtocheck = dataGridViewList.Rows[i].Cells[1].Value.ToString();
+                        if (emailtocheck == ListNewRow[0][1])
+                        {
+                            MessageBox.Show("2 emails are identicals, check it please");
+                            identicals = true;
+                            break;
 
+                        }
+                    }
+                    if (identicals == false)
+                    {
+
+                        connectionDB.PutListofRowsIntoLastRows(dataGridViewList, bindingSourceList, ListNewRow);
+                    }
+
+                }
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.ToString());
             }
             
            
@@ -115,8 +129,7 @@ namespace EscolaProMontijo
        }
         private void bt_Delete_Click(object sender, EventArgs e)
         {
-            connectionMySql connectionDB = new connectionMySql();
-            connectionDB.ConnectionMySql();
+            
 
             connectionDB.DeleteCompanyInDatagridView(comboBoxCompany.Text, comboBoxEmail.Text, dataGridViewList);
 
@@ -125,7 +138,7 @@ namespace EscolaProMontijo
 
         private void comboBoxChooseList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            connectionMySql connectionDB = new connectionMySql();
+            
             connectionDB.ConnectionMySql();
             
  
@@ -147,7 +160,8 @@ namespace EscolaProMontijo
 
         private void viewCompaniesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            CompanyListForm companylistform = new CompanyListForm();
+            companylistform.ShowDialog();
         }
 
         private void addACompanyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -171,7 +185,7 @@ namespace EscolaProMontijo
 
         private void comboBoxCompany_SelectedIndexChanged(object sender, EventArgs e)
         {
-            connectionMySql connectionDB = new connectionMySql();
+      
             connectionDB.ConnectionMySql();
 
             comboBoxEmail.Items.Clear();

@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
+using System.Collections.Generic;
 
 
 namespace EscolaProMontijo
@@ -74,53 +75,8 @@ namespace EscolaProMontijo
             }
         }
 
-        /// <summary>
-        /// Get a string[] which contains the infos of the company
-        /// </summary>
-        /// <param name="nameCompany">The name of the company in the database</param>
-        /// <returns></returns>
-        public string[] getInfosinStringArrayOfCompany (string nameCompany)
-        {
-            MySqlConnection con = ConnectionMySql();
-            con.Open();
-
-            string[] row = new string[4];
-            string querysql = "SELECT c.name, c.email, c.numero, c.address FROM company c where name ='" + nameCompany + "'";
-            using (var command = new MySqlCommand(querysql, con))
-            {
-                using (var reader = command.ExecuteReader())
-                {
-                    //Iterate through the rows and add it to the combobox's items
-                    while (reader.Read())
-                    {
-                        row = new string[] { reader.GetString("name"), reader.GetString("email"), reader.GetString("numero"), reader.GetString("address") };
-                    }
-                    return row;
-                }
-            }
-
-        }
-        public string[] getInfosinStringArrayOfCompany(string nameCompany, string emailCompany)
-        {
-            MySqlConnection con = ConnectionMySql();
-            con.Open();
-
-            string[] row = new string[4];
-            string querysql = "SELECT c.name, c.email, c.numero, c.address FROM company c where name ='" + nameCompany +"' AND c.email ='"+emailCompany+"'";
-            using (var command = new MySqlCommand(querysql, con))
-            {
-                using (var reader = command.ExecuteReader())
-                {
-                    //Iterate through the rows and add it to the combobox's items
-                    while (reader.Read())
-                    {
-                        row = new string[] { reader.GetString("name"), reader.GetString("email"), reader.GetString("numero"), reader.GetString("address") };
-                    }
-                    return row;
-                }
-            }
-
-        }
+       
+        
         /// <summary>
         /// 
         /// </summary>
@@ -171,7 +127,7 @@ namespace EscolaProMontijo
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="querySql">a query sql</param>
+        /// <param name="querySql">a sql query</param>
         /// <param name="combobox">the combobox you want the result of the query in</param>
         /// <param name="column"column of the table you want in your combobox</param>
         public void PutQueryIntoComboBox(string querySql, ComboBox combobox, string column)
@@ -203,27 +159,55 @@ namespace EscolaProMontijo
         /// <param name="bs">binding source of the datagridview</param>
         /// <param name="array">valid array you want to add</param>
 
-        public void PutQueryIntoLastRow(DataGridView dgv, BindingSource bs, string[] array)
+        public void PutListofRowsIntoLastRows(DataGridView dgv, BindingSource bs, List<string[]> listofRows)
         {
 
+            
+            foreach (string[] rows in listofRows)
+            {
 
+            
             DataTable dataTable = (DataTable)bs.DataSource;
 
             DataRow newRow = dataTable.NewRow();
 
-            newRow[0] = array[0];
-            newRow[1] = array[1];
-            newRow[2] = array[2];
-            newRow[3] = array[3];
+            newRow[0] = rows[0];
+            newRow[1] = rows[1];
+            newRow[2] = rows[2];
+            newRow[3] = rows[3];
 
             dataTable.Rows.Add(newRow);
 
+            }
 
 
 
             // Resize the DataGridView columns to fit the newly loaded content.
             dgv.AutoResizeColumns(
                 DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
+
+        }
+        public List<String[]> getInfosinStringArrayOfQuery(string querysql)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+            List<string[]> rowsString = new List<string[]>();
+
+            string[] row = new string[4];
+            
+            using (var command = new MySqlCommand(querysql, con))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    //Iterate through the rows and add it to the combobox's items
+                    while (reader.Read())
+                    {
+                        row = new string[] { reader.GetString("name"), reader.GetString("email"), reader.GetString("numero"), reader.GetString("address") };
+                        rowsString.Add(row);
+                    }
+                    return rowsString;
+                }
+            }
 
         }
 

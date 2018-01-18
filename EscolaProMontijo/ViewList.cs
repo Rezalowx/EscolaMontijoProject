@@ -91,5 +91,10 @@ namespace EscolaProMontijo
             }
 
         }
+
+        private void dataGridViewList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

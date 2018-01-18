@@ -57,12 +57,12 @@
             this.ToolStripMenuAddACompany = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewCompaniesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteACompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuCreateASignature = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelCompanyTo = new System.Windows.Forms.Label();
             this.labelSector = new System.Windows.Forms.Label();
             this.labelCompany = new System.Windows.Forms.Label();
-            this.deleteACompanyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSourceList = new System.Windows.Forms.BindingSource(this.components);
             this.comboBoxEmail = new System.Windows.Forms.ComboBox();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -112,7 +112,7 @@
             // bt_Send
             // 
             this.bt_Send.BackColor = System.Drawing.SystemColors.Window;
-            this.bt_Send.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Send.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Send.Location = new System.Drawing.Point(838, 236);
             this.bt_Send.Name = "bt_Send";
             this.bt_Send.Size = new System.Drawing.Size(134, 41);
@@ -122,7 +122,7 @@
             // 
             // bt_Delete
             // 
-            this.bt_Delete.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Delete.Font = new System.Drawing.Font("Tahoma", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Delete.Location = new System.Drawing.Point(1210, 604);
             this.bt_Delete.Name = "bt_Delete";
             this.bt_Delete.Size = new System.Drawing.Size(75, 23);
@@ -133,7 +133,7 @@
             // 
             // bt_Add
             // 
-            this.bt_Add.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_Add.Font = new System.Drawing.Font("Tahoma", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_Add.Location = new System.Drawing.Point(1051, 604);
             this.bt_Add.Name = "bt_Add";
             this.bt_Add.Size = new System.Drawing.Size(75, 23);
@@ -303,6 +303,13 @@
             this.viewCompaniesToolStripMenuItem.Text = "View companies";
             this.viewCompaniesToolStripMenuItem.Click += new System.EventHandler(this.viewCompaniesToolStripMenuItem_Click);
             // 
+            // deleteACompanyToolStripMenuItem
+            // 
+            this.deleteACompanyToolStripMenuItem.Name = "deleteACompanyToolStripMenuItem";
+            this.deleteACompanyToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.deleteACompanyToolStripMenuItem.Text = "Delete a company";
+            this.deleteACompanyToolStripMenuItem.Click += new System.EventHandler(this.deleteACompanyToolStripMenuItem_Click);
+            // 
             // ToolStripMenuCreateASignature
             // 
             this.ToolStripMenuCreateASignature.Name = "ToolStripMenuCreateASignature";
@@ -350,13 +357,6 @@
             this.labelCompany.Size = new System.Drawing.Size(67, 16);
             this.labelCompany.TabIndex = 16;
             this.labelCompany.Text = "Company";
-            // 
-            // deleteACompanyToolStripMenuItem
-            // 
-            this.deleteACompanyToolStripMenuItem.Name = "deleteACompanyToolStripMenuItem";
-            this.deleteACompanyToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.deleteACompanyToolStripMenuItem.Text = "Delete a company";
-            this.deleteACompanyToolStripMenuItem.Click += new System.EventHandler(this.deleteACompanyToolStripMenuItem_Click);
             // 
             // comboBoxEmail
             // 
