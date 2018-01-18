@@ -33,7 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,12 +50,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddACompany.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddACompany.Designer.cs">
+      <DependentUpon>AddACompany.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionMySql.cs" />
     <Compile Include="Create a list.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Create a list.Designer.cs">
       <DependentUpon>Create a list.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteACompanyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteACompanyForm.Designer.cs">
+      <DependentUpon>DeleteACompanyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -62,8 +77,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewList.Designer.cs">
+      <DependentUpon>ViewList.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddACompany.resx">
+      <DependentUpon>AddACompany.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Create a list.resx">
       <DependentUpon>Create a list.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteACompanyForm.resx">
+      <DependentUpon>DeleteACompanyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -77,6 +104,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ViewList.resx">
+      <DependentUpon>ViewList.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
