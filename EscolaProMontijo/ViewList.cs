@@ -34,8 +34,8 @@ namespace EscolaProMontijo
 
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                string sqlCommand = "SELECT name FROM list";
-                connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxList, "name");
+                string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
+                connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxList, "available");
 
 
             }
@@ -52,14 +52,15 @@ namespace EscolaProMontijo
 
             ds.Clear();
             
+            
+          
 
-            string parameter = comboBoxList.Text;
-            string sqlQuery = "SELECT lc.* FROM list l JOIN listcompany lc ON l.id = lc.idList JOIN company c ON c.id = lc.idCompany WHERE l.name ='" + parameter + "'";
+         
             try
             {
-                
-                
-                dataAdapter = new MySqlDataAdapter(sqlQuery, connectionDB.getMyconnectionString());
+
+                string sqlCommand = "SELECT l.* FROM " + comboBoxList.Text + " l JOIN company c ON c.id = l.idCompany";
+                dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString());
                 // 3. fill in insert, update, and delete commands
                 MySqlCommandBuilder cmdBldr = new MySqlCommandBuilder(dataAdapter);
                 dataAdapter.Fill(ds, "bddmontijotest");

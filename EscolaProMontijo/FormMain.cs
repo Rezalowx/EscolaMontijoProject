@@ -41,8 +41,8 @@ namespace EscolaProMontijo
 
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                string sqlCommand = "SELECT name FROM list";
-                connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxChooseList, "name");
+                string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
+                connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxChooseList, "available");
 
                 sqlCommand = "SELECT name FROM sector";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxSector, "name");
@@ -141,10 +141,14 @@ namespace EscolaProMontijo
             
             connectionDB.ConnectionMySql();
             
- 
+            
             string parameter = comboBoxChooseList.Text;
-            string sqlQuery = "SELECT c.name, c.email, c.numero, address FROM list l JOIN listcompany lc ON l.id = lc.idList JOIN company c ON c.id = lc.idCompany WHERE l.name ='" + parameter + "'"; 
+            // string sqlQuery = "SELECT c.name, c.email, c.numero, address FROM list l JOIN listcompany lc ON l.id = lc.idList JOIN company c ON c.id = lc.idCompany WHERE l.name ='" + parameter + "'"; 
+            string sqlQuery = "SELECT c.name, c.email, c.numero, c.address, l.* FROM " + parameter + " l JOIN company c ON c.id = l.idCompany";
+        
             connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
+            dataGridViewList.Columns.Remove("nameCompany");
+            dataGridViewList.Columns.Remove("idCompany");
         }
 
         private void viewListsToolStripMenuItem1_Click(object sender, EventArgs e)

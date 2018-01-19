@@ -97,6 +97,41 @@ namespace EscolaProMontijo
                 }
             }
         }
+
+
+        
+        public void createNewList(string nameOfList, params string[] columns)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+
+            string sqlQuery = "CREATE TABLE `list"+nameOfList+"` ( `idCompany` int(10) NOT NULL, `nameCompany` varchar(77) NOT NULL) ENGINE = InnoDB DEFAULT CHARSET = utf8;";
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+
+            sqlQuery = "ALTER TABLE `list"+nameOfList+"` ADD PRIMARY KEY(`idCompany`,`nameCompany`), ADD KEY `nameCompany` (`nameCompany`), ADD KEY `idCompany` (`idCompany`,`nameCompany`);";
+            command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+
+            sqlQuery = "ALTER TABLE `list"+nameOfList+"` ADD CONSTRAINT `"+nameOfList+"_ibfk_2` FOREIGN KEY (`idCompany`,`nameCompany`) REFERENCES `company` (`id`, `name`) ON DELETE CASCADE;";
+            command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+
+            
+
+            for (int i = 0; i < columns.Length; i++)
+            {
+                
+                if (columns[i] != "")
+                {
+                    sqlQuery = "ALTER TABLE `list" + nameOfList + "` ADD `" + columns[i] + "` VARCHAR(77) NOT NULL; ";
+                    command = new MySqlCommand(sqlQuery, con);
+                    command.ExecuteNonQuery();
+
+                }
+            }
+
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -240,13 +275,7 @@ namespace EscolaProMontijo
             }
         }
 
-        /// <summary>
-        /// Add a new company in database
-        /// </summary>
-        /// <param name="name">Company's name</param>
-        /// <param name="email">Company's email</param>
-        /// <param name="numero">Company's numero</param>
-        /// <param name="address">Company's address</param>
+
 
 
     }
