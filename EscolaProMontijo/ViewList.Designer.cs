@@ -34,6 +34,7 @@
             this.dataGridViewList = new System.Windows.Forms.DataGridView();
             this.bindingSourceList = new System.Windows.Forms.BindingSource(this.components);
             this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonDeleteList = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceList)).BeginInit();
             this.SuspendLayout();
@@ -71,13 +72,24 @@
             // buttonEdit
             // 
             this.buttonEdit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEdit.Location = new System.Drawing.Point(433, 61);
+            this.buttonEdit.Location = new System.Drawing.Point(418, 60);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonEdit.Size = new System.Drawing.Size(126, 24);
             this.buttonEdit.TabIndex = 3;
-            this.buttonEdit.Text = "Confirm";
+            this.buttonEdit.Text = "Save changes";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonDeleteList
+            // 
+            this.buttonDeleteList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteList.Location = new System.Drawing.Point(618, 61);
+            this.buttonDeleteList.Name = "buttonDeleteList";
+            this.buttonDeleteList.Size = new System.Drawing.Size(113, 23);
+            this.buttonDeleteList.TabIndex = 4;
+            this.buttonDeleteList.Text = "Delete the list";
+            this.buttonDeleteList.UseVisualStyleBackColor = true;
+            this.buttonDeleteList.Click += new System.EventHandler(this.buttonDeleteList_Click);
             // 
             // ViewList
             // 
@@ -85,6 +97,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1377, 739);
+            this.Controls.Add(this.buttonDeleteList);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.dataGridViewList);
             this.Controls.Add(this.labelChooseAList);
@@ -107,5 +120,6 @@
         private System.Windows.Forms.DataGridView dataGridViewList;
         private System.Windows.Forms.BindingSource bindingSourceList;
         private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Button buttonDeleteList;
     }
 }

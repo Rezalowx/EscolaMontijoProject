@@ -27,14 +27,13 @@ namespace EscolaProMontijo
         private void CompanyListForm_Load(object sender, EventArgs e)
         {
             dataGridViewCompanies.DataSource = bindingSourceCompanies;
-            dataGridView1.DataSource = bindingSourceList;
+            
             connectionDB.ConnectionMySql();
             dataGridViewCompanies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            string sqlCommand = "SELECT name FROM list";
+            string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
 
-            connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxListCompanies, "name");
+            connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxListCompanies, "available");
 
             sqlCommand = "SELECT * FROM company ORDER BY name";
             connectionDB.getData(sqlCommand, dataGridViewCompanies, bindingSourceCompanies);
@@ -46,11 +45,10 @@ namespace EscolaProMontijo
         {
             
             string parameter = comboBoxListCompanies.Text;
-            string sqlQuery = "SELECT c.* FROM list l JOIN listcompany lc ON l.id = lc.idList JOIN company c ON c.id = lc.idCompany WHERE l.name ='" + parameter + "'";
+            string sqlQuery = "SELECT c.* FROM " + parameter + " l JOIN company c ON c.id = l.idCompany";
             connectionDB.getData(sqlQuery, dataGridViewCompanies, bindingSourceCompanies);
 
-            sqlQuery = "SELECT lc.* FROM list l JOIN listcompany lc ON l.id = lc.idList JOIN company c ON c.id = lc.idCompany WHERE l.name ='" + parameter + "'";
-            connectionDB.getData(sqlQuery, dataGridView1, bindingSourceList);
+            
 
         }
     }

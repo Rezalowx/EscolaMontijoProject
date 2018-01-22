@@ -39,12 +39,20 @@ namespace EscolaProMontijo
 
             try
             {
-                connectionDB.addNewCompany(connectionDB.getIdSectorFromName(comboBoxSector.Text), textBoxNameCompany.Text, textBoxEmailCompany.Text, textBoxNumero.Text, textBoxAddressCompany.Text);
-                MessageBox.Show("Database updated !");
+                if (textBoxNameCompany.Text != "")
+                {
+                    connectionDB.addNewCompany(connectionDB.getIdSectorFromName(comboBoxSector.Text), textBoxNameCompany.Text, textBoxEmailCompany.Text, textBoxNumero.Text, textBoxAddressCompany.Text);
+                    MessageBox.Show("Database updated !");
+                }
+                else
+                {
+                    MessageBox.Show("Add at least a company name !");
+                }
             }
             catch
             {
-                MessageBox.Show("Error, database is not updated");
+                MessageBox.Show("Error, database is not updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
         }
 

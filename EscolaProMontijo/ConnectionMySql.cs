@@ -132,6 +132,19 @@ namespace EscolaProMontijo
             }
 
         }
+
+        public void deleteList (string nameTable)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+
+            string sqlQuery = "DROP table " + nameTable;
+
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+
+
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,6 +170,9 @@ namespace EscolaProMontijo
             con.Open();
 
             string sqlQuery = "DELETE FROM company WHERE name ='" + name + "' AND email ='"+email+"'";
+
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
         }
 
         /// <summary>

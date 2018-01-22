@@ -15,7 +15,7 @@ namespace EscolaProMontijo
     {
         DataSet ds = new DataSet();
         MySqlDataAdapter dataAdapter;
-        
+        connectionMySql connectionDB = new connectionMySql();
         public ViewList()
         {
             InitializeComponent();
@@ -27,9 +27,9 @@ namespace EscolaProMontijo
             dataGridViewList.DataSource = bindingSourceList;
             try
             {
-                connectionMySql connectionDB = new connectionMySql();
+                
                 connectionDB.ConnectionMySql();
-
+                comboBoxList.Items.Clear();
 
 
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -41,24 +41,28 @@ namespace EscolaProMontijo
             }
             catch (Exception er)
             {
-                MessageBox.Show(er.ToString());
+                MessageBox.Show(er.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            connectionMySql connectionDB = new connectionMySql();
+            
             connectionDB.ConnectionMySql();
 
             ds.Clear();
-            
-            
+
+            var test = dataGridViewList.Columns.Count;    ///////// FIX THIS PLS
+            if (test > 2)                                   ///////// FIX THIS PLS
+            {
+                dataGridViewList.Columns.RemoveAt(2);    /////////// FIX THIS PLS
+            }
           
 
          
             try
             {
-
+                
                 string sqlCommand = "SELECT l.* FROM " + comboBoxList.Text + " l JOIN company c ON c.id = l.idCompany";
                 dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString());
                 // 3. fill in insert, update, and delete commands
@@ -67,11 +71,12 @@ namespace EscolaProMontijo
                 dataGridViewList.DataSource = ds;
                 dataGridViewList.DataMember = "bddmontijotest";
 
+                
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -87,7 +92,7 @@ namespace EscolaProMontijo
             }
             catch
             {
-                MessageBox.Show("Error, database is not updated");
+                MessageBox.Show("Error, database is not updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboBox1_SelectedIndexChanged(sender, e);
             }
 
@@ -96,6 +101,28 @@ namespace EscolaProMontijo
         private void dataGridViewList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void buttonDeleteList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = MessageBox.Show("Are you sure ?", "Confirmation", MessageBoxButtons.OKCancel);
+                
+                if (result == DialogResult.OK)
+                {
+                    connectionDB.deleteList(comboBoxList.Text);
+                    MessageBox.Show("List deleted successfully");
+                    comboBoxList.Text = null;
+   
+                }
+                ViewList_Load(null, null);
+            }
+           
+            catch
+            {
+                MessageBox.Show("ERROR : can't update the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

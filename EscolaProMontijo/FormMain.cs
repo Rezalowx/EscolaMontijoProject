@@ -41,19 +41,24 @@ namespace EscolaProMontijo
 
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+                comboBoxChooseList.Items.Clear();
                 string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxChooseList, "available");
 
+                comboBoxSector.Items.Clear();
                 sqlCommand = "SELECT name FROM sector";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxSector, "name");
 
+                comboBoxCompany.Items.Clear();
                 sqlCommand = "SELECT DISTINCT name from company";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxCompany, "name");
+
+                comboBoxEmail.Visible = false;
 
             }
             catch ( Exception er)
             {
-                MessageBox.Show(er.ToString());
+                MessageBox.Show(er.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             
@@ -121,7 +126,7 @@ namespace EscolaProMontijo
             }
             catch (Exception er)
             {
-                MessageBox.Show(er.ToString());
+                MessageBox.Show(er.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
            
@@ -129,9 +134,15 @@ namespace EscolaProMontijo
        }
         private void bt_Delete_Click(object sender, EventArgs e)
         {
-            
 
-            connectionDB.DeleteCompanyInDatagridView(comboBoxCompany.Text, comboBoxEmail.Text, dataGridViewList);
+            try
+            {
+                connectionDB.DeleteCompanyInDatagridView(comboBoxCompany.Text, comboBoxEmail.Text, dataGridViewList);
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -160,24 +171,40 @@ namespace EscolaProMontijo
         {
             ViewList vL = new ViewList();
             vL.ShowDialog();
+            Form1_Load(null, null);
+            comboBoxCompany.Text = null;
+            comboBoxSector.Text = null;
+            comboBoxEmail.Text = null;
         }
 
         private void viewCompaniesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CompanyListForm companylistform = new CompanyListForm();
             companylistform.ShowDialog();
+            Form1_Load(null, null);
+            comboBoxCompany.Text = null;
+            comboBoxSector.Text = null;
+            comboBoxEmail.Text = null;
         }
 
         private void addACompanyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddACompany addCompany = new AddACompany();
             addCompany.ShowDialog();
+            Form1_Load(null, null);
+            comboBoxCompany.Text = null;
+            comboBoxSector.Text = null;
+            comboBoxEmail.Text = null;
         }
 
         private void CreateListsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Create_a_list createAList = new Create_a_list();
             createAList.ShowDialog();
+            Form1_Load(null, null);
+            comboBoxCompany.Text = null;
+            comboBoxSector.Text = null;
+            comboBoxEmail.Text = null;
 
         }
 
@@ -185,6 +212,10 @@ namespace EscolaProMontijo
         {
             DeleteACompanyForm deletecompany = new DeleteACompanyForm();
             deletecompany.ShowDialog();
+            Form1_Load(null, null);
+            comboBoxCompany.Text = null;
+            comboBoxSector.Text = null;
+            comboBoxEmail.Text = null;
         }
 
         private void comboBoxCompany_SelectedIndexChanged(object sender, EventArgs e)
