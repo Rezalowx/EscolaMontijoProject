@@ -12,6 +12,8 @@ namespace EscolaProMontijo
 {
     public partial class AddACompany : Form
     {
+        connectionMySql connectionDB = new connectionMySql();
+
         public AddACompany()
         {
             InitializeComponent();
@@ -19,7 +21,7 @@ namespace EscolaProMontijo
 
         private void AddACompany_Load(object sender, EventArgs e)
         {
-            connectionMySql connectionDB = new connectionMySql();
+            
             connectionDB.ConnectionMySql();
 
             string sqlQuery = "SELECT name FROM sector";
@@ -34,7 +36,7 @@ namespace EscolaProMontijo
         private void buttonSaveCompany_Click(object sender, EventArgs e)
         {
 
-            connectionMySql connectionDB = new connectionMySql();
+            
             connectionDB.ConnectionMySql();
 
             try
@@ -46,7 +48,7 @@ namespace EscolaProMontijo
                 }
                 else
                 {
-                    MessageBox.Show("Add at least a company name !");
+                    MessageBox.Show("Add at least a company name !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch

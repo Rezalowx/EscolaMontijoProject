@@ -83,9 +83,9 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewCompanies.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewCompanies.Location = new System.Drawing.Point(12, 165);
+            this.dataGridViewCompanies.Location = new System.Drawing.Point(47, 135);
             this.dataGridViewCompanies.Name = "dataGridViewCompanies";
-            this.dataGridViewCompanies.Size = new System.Drawing.Size(931, 673);
+            this.dataGridViewCompanies.Size = new System.Drawing.Size(1292, 527);
             this.dataGridViewCompanies.TabIndex = 3;
             // 
             // CompanyListForm
@@ -93,7 +93,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1444, 882);
+            this.ClientSize = new System.Drawing.Size(1362, 674);
             this.Controls.Add(this.dataGridViewCompanies);
             this.Controls.Add(this.labelList);
             this.Controls.Add(this.comboBoxListCompanies);

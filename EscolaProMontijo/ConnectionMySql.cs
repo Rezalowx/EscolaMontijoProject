@@ -168,11 +168,14 @@ namespace EscolaProMontijo
         {
             MySqlConnection con = ConnectionMySql();
             con.Open();
-
-            string sqlQuery = "DELETE FROM company WHERE name ='" + name + "' AND email ='"+email+"'";
-
+            string sqlQuery = "";
+           
+                   sqlQuery = "DELETE FROM company WHERE name ='" + name + "' AND email ='" + email + "'";
+            
+           
             var command = new MySqlCommand(sqlQuery, con);
             command.ExecuteNonQuery();
+
         }
 
         /// <summary>

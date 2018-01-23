@@ -50,15 +50,19 @@ namespace EscolaProMontijo
             
             connectionDB.ConnectionMySql();
 
-            ds.Clear();
+            
 
-            var test = dataGridViewList.Columns.Count;    ///////// FIX THIS PLS
-            if (test > 2)                                   ///////// FIX THIS PLS
+            if (dataGridViewList.ColumnCount != 0)
             {
-                dataGridViewList.Columns.RemoveAt(2);    /////////// FIX THIS PLS
+                ds.Tables["bddmontijotest"].Columns.Clear();   // Clear column of database
+                ds.Tables["bddmontijotest"].Rows.Clear(); // Clear Rows of database
+                //ds.Clear();
             }
-          
 
+
+            // FIX THIS 
+
+           
          
             try
             {
@@ -88,7 +92,7 @@ namespace EscolaProMontijo
             try
             {
                 dataAdapter.Update(ds, "bddmontijotest");
-                MessageBox.Show("Datase updated");
+                MessageBox.Show("Database updated");
             }
             catch
             {

@@ -26,6 +26,9 @@ namespace EscolaProMontijo
             {
                 connectionDB.deleteCompany(comboBoxCompany.Text, comboBoxEmail.Text);
                 MessageBox.Show("Company deleted");
+                DeleteACompanyForm_Load(null, null);
+                comboBoxCompany.Text = null;
+                comboBoxEmail.Text = null; 
             }
             catch
             {
@@ -38,6 +41,8 @@ namespace EscolaProMontijo
             connectionMySql connectionDB = new connectionMySql();
             connectionDB.ConnectionMySql();
 
+            comboBoxCompany.Items.Clear();
+            comboBoxEmail.Items.Clear();
             string sqlQuery = "SELECT DISTINCT name FROM company";
             connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxCompany, "name");
         }
