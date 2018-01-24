@@ -237,5 +237,18 @@ namespace EscolaProMontijo
                 labelEmail.Visible = true;
             }
         }
+
+        private void bt_Send_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SendMails sendmail = new SendMails();
+                sendmail.sendAMail(textBoxTextMail.Text, "test", "gregory.brugnet@gmail.com", textBoxSubjectMail.Text);
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.ToString());
+            }
+        }
     }
 }
