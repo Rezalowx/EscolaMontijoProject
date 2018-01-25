@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace EscolaProMontijo
 {
     public partial class FormMain : Form
     {
         connectionMySql connectionDB = new connectionMySql();
-        
+        List<string> allAttachments = new List<string>();
+
 
         public FormMain()
         {
@@ -105,8 +108,7 @@ namespace EscolaProMontijo
                 {
                     for (int i = 0; i < dataGridViewList.Rows.Count - 1; i++)
                     {
-                        int nbNewRows = ListNewRow.Count;
-                        MessageBox.Show(nbNewRows.ToString());
+                        
                         string emailtocheck = dataGridViewList.Rows[i].Cells[1].Value.ToString();
                         if (emailtocheck == ListNewRow[0][1])
                         {
@@ -242,12 +244,44 @@ namespace EscolaProMontijo
         {
             try
             {
-                SendMails sendmail = new SendMails();
-                sendmail.sendAMail(textBoxTextMail.Text, "test", "gregory.brugnet@gmail.com", textBoxSubjectMail.Text);
+
+                int nbRows = dataGridViewList.RowCount;
+
+                for (int row = 0; row < nbRows - 1; row++)
+                {
+                   
+
+                    SendMails sendmail = new SendMails();
+                    sendmail.sendAMail(textBoxTextMail.Text, "emailFrom", dataGridViewList.Rows[row].Cells[1].Value.ToString(), textBoxSubjectMail.Text, allAttachments);
+                }
             }
             catch (Exception er)
             {
                 MessageBox.Show(er.ToString());
+            }
+        }
+
+        private void buttonBrowse_Click(object sender, EventArgs e)
+        {
+           
+           var resultFile = openFileDialog1.ShowDialog();
+
+            if (resultFile == DialogResult.OK)
+            {
+                int lastline = textBoxBrowse.Lines.Length;
+
+                if (lastline > 0)
+                {
+                    textBoxBrowse.AppendText("\n" + openFileDialog1.FileName);
+
+                    allAttachments.Add(openFileDialog1.FileName); // FIX THIS
+                    
+                    
+                }
+                else
+                {
+                    textBoxBrowse.Text = openFileDialog1.FileName;
+                }
             }
         }
     }
