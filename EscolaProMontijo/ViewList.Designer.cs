@@ -35,6 +35,12 @@
             this.bindingSourceList = new System.Windows.Forms.BindingSource(this.components);
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDeleteList = new System.Windows.Forms.Button();
+            this.comboBoxCompany = new System.Windows.Forms.ComboBox();
+            this.labelCompany = new System.Windows.Forms.Label();
+            this.buttonAddCompany = new System.Windows.Forms.Button();
+            this.buttonDeleteCompany = new System.Windows.Forms.Button();
+            this.comboBoxEmail = new System.Windows.Forms.ComboBox();
+            this.labelEmail = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceList)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +89,7 @@
             // buttonDeleteList
             // 
             this.buttonDeleteList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteList.Location = new System.Drawing.Point(618, 61);
+            this.buttonDeleteList.Location = new System.Drawing.Point(572, 61);
             this.buttonDeleteList.Name = "buttonDeleteList";
             this.buttonDeleteList.Size = new System.Drawing.Size(113, 23);
             this.buttonDeleteList.TabIndex = 4;
@@ -91,12 +97,79 @@
             this.buttonDeleteList.UseVisualStyleBackColor = true;
             this.buttonDeleteList.Click += new System.EventHandler(this.buttonDeleteList_Click);
             // 
+            // comboBoxCompany
+            // 
+            this.comboBoxCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxCompany.FormattingEnabled = true;
+            this.comboBoxCompany.Location = new System.Drawing.Point(56, 115);
+            this.comboBoxCompany.Name = "comboBoxCompany";
+            this.comboBoxCompany.Size = new System.Drawing.Size(179, 24);
+            this.comboBoxCompany.TabIndex = 5;
+            this.comboBoxCompany.SelectedIndexChanged += new System.EventHandler(this.comboBoxCompany_SelectedIndexChanged);
+            // 
+            // labelCompany
+            // 
+            this.labelCompany.AutoSize = true;
+            this.labelCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCompany.Location = new System.Drawing.Point(53, 96);
+            this.labelCompany.Name = "labelCompany";
+            this.labelCompany.Size = new System.Drawing.Size(130, 16);
+            this.labelCompany.TabIndex = 6;
+            this.labelCompany.Text = "Choose a Company";
+            // 
+            // buttonAddCompany
+            // 
+            this.buttonAddCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddCompany.Location = new System.Drawing.Point(250, 115);
+            this.buttonAddCompany.Name = "buttonAddCompany";
+            this.buttonAddCompany.Size = new System.Drawing.Size(61, 24);
+            this.buttonAddCompany.TabIndex = 7;
+            this.buttonAddCompany.Text = "Add";
+            this.buttonAddCompany.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteCompany
+            // 
+            this.buttonDeleteCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteCompany.Location = new System.Drawing.Point(329, 115);
+            this.buttonDeleteCompany.Name = "buttonDeleteCompany";
+            this.buttonDeleteCompany.Size = new System.Drawing.Size(62, 24);
+            this.buttonDeleteCompany.TabIndex = 8;
+            this.buttonDeleteCompany.Text = "Delete";
+            this.buttonDeleteCompany.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxEmail
+            // 
+            this.comboBoxEmail.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEmail.FormattingEnabled = true;
+            this.comboBoxEmail.Location = new System.Drawing.Point(418, 115);
+            this.comboBoxEmail.Name = "comboBoxEmail";
+            this.comboBoxEmail.Size = new System.Drawing.Size(179, 24);
+            this.comboBoxEmail.TabIndex = 9;
+            this.comboBoxEmail.Visible = false;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmail.Location = new System.Drawing.Point(415, 96);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(49, 16);
+            this.labelEmail.TabIndex = 10;
+            this.labelEmail.Text = "Email :";
+            this.labelEmail.Visible = false;
+            // 
             // ViewList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1377, 739);
+            this.Controls.Add(this.labelEmail);
+            this.Controls.Add(this.comboBoxEmail);
+            this.Controls.Add(this.buttonDeleteCompany);
+            this.Controls.Add(this.buttonAddCompany);
+            this.Controls.Add(this.labelCompany);
+            this.Controls.Add(this.comboBoxCompany);
             this.Controls.Add(this.buttonDeleteList);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.dataGridViewList);
@@ -121,5 +194,11 @@
         private System.Windows.Forms.BindingSource bindingSourceList;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDeleteList;
+        private System.Windows.Forms.ComboBox comboBoxCompany;
+        private System.Windows.Forms.Label labelCompany;
+        private System.Windows.Forms.Button buttonAddCompany;
+        private System.Windows.Forms.Button buttonDeleteCompany;
+        private System.Windows.Forms.ComboBox comboBoxEmail;
+        private System.Windows.Forms.Label labelEmail;
     }
 }

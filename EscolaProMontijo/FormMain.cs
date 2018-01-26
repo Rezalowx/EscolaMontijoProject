@@ -156,7 +156,7 @@ namespace EscolaProMontijo
             
             
             string parameter = comboBoxChooseList.Text;
-            // string sqlQuery = "SELECT c.name, c.email, c.numero, address FROM list l JOIN listcompany lc ON l.id = lc.idList JOIN company c ON c.id = lc.idCompany WHERE l.name ='" + parameter + "'"; 
+            
             string sqlQuery = "SELECT c.name, c.email, c.numero, c.address, l.* FROM " + parameter + " l JOIN company c ON c.id = l.idCompany";
         
             connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
@@ -272,17 +272,16 @@ namespace EscolaProMontijo
 
                 if (lastline > 0)
                 {
-                    textBoxBrowse.AppendText("\n" + openFileDialog1.FileName);
-
-                    allAttachments.Add(openFileDialog1.FileName); // FIX THIS
-                    
-                    
-                }
+                    textBoxBrowse.AppendText("\n" + openFileDialog1.FileName);        // Append attachment to the textbox
+                }                                                                           
                 else
                 {
                     textBoxBrowse.Text = openFileDialog1.FileName;
                 }
+
+                allAttachments.Add(openFileDialog1.FileName);               //Add attachments to the list
             }
+        
         }
     }
 }

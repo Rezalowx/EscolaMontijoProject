@@ -37,7 +37,7 @@ namespace EscolaProMontijo
                 string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxList, "available");
 
-
+                
             }
             catch (Exception er)
             {
@@ -50,7 +50,9 @@ namespace EscolaProMontijo
             
             connectionDB.ConnectionMySql();
 
-            
+            string tableList = comboBoxList.Text;
+            string sqlCommand = "SELECT name FROM company";
+            connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxCompany, "name");
 
             if (dataGridViewList.ColumnCount != 0)
             {
@@ -67,7 +69,7 @@ namespace EscolaProMontijo
             try
             {
                 
-                string sqlCommand = "SELECT l.* FROM " + comboBoxList.Text + " l JOIN company c ON c.id = l.idCompany";
+                sqlCommand = "SELECT l.* FROM " + comboBoxList.Text + " l JOIN company c ON c.id = l.idCompany";
                 dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString());
                 // 3. fill in insert, update, and delete commands
                 MySqlCommandBuilder cmdBldr = new MySqlCommandBuilder(dataAdapter);
@@ -126,6 +128,25 @@ namespace EscolaProMontijo
             catch
             {
                 MessageBox.Show("ERROR : can't update the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBoxCompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            connectionDB.ConnectionMySql();
+
+            comboBoxEmail.Items.Clear();
+            comboBoxEmail.Visible = false;
+            labelEmail.Visible = false;
+
+            string sqlQuery = "SELECT email from company WHERE name='" + comboBoxCompany.Text + "'";
+            connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxEmail, "email");
+            comboBoxEmail.Text = Convert.ToString(comboBoxEmail.Items[0]);
+
+            if (comboBoxEmail.Items.Count > 1)
+            {
+                comboBoxEmail.Visible = true;
+                labelEmail.Visible = true;
             }
         }
     }
