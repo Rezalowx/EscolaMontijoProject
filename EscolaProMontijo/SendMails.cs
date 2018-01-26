@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net.Mime;
-
+using System.Windows.Forms;
 namespace EscolaProMontijo
 {
     class SendMails
@@ -19,7 +19,6 @@ namespace EscolaProMontijo
 
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
             MailMessage MyMsg = new MailMessage();
@@ -28,9 +27,10 @@ namespace EscolaProMontijo
             client.EnableSsl = true;
             if (attachment[0] != "")
             {
-    
+                
                 foreach (string attachmentsInList in attachment)
                 {
+                    
                     MyMsg.Attachments.Add(new Attachment(attachmentsInList));
                 }
                 
@@ -41,7 +41,7 @@ namespace EscolaProMontijo
             MyMsg.From = new MailAddress("gregory.brugnet@gmail.com","TCHOUPINOU'S APPLICATION FAIT DES TESTS SUR TWA");
             MyMsg.BodyEncoding = Encoding.UTF8;
             MyMsg.Body = message;
-            client.Credentials = new System.Net.NetworkCredential("gregory.brugnet@gmail.com", "xDkikoolol1");
+            client.Credentials = new System.Net.NetworkCredential("gregory.brugnet@gmail.com", "passwordLOL");
 
             
             client.Send(MyMsg);
