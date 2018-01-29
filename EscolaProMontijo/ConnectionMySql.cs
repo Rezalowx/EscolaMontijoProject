@@ -133,6 +133,51 @@ namespace EscolaProMontijo
 
         }
 
+        public void addCompanyToList (string nameCompany, string emailCompany, string nameList)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+            string idCompany = "";
+            string sqlQuery = "SELECT id FROM Company where name ='"+nameCompany+"' AND email ='"+emailCompany+"'" ;
+            using (var commandReader = new MySqlCommand(sqlQuery, con))
+            {
+
+                using (var reader = commandReader.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        idCompany = (reader.GetString("id"));
+                    }      
+                }
+            }
+            sqlQuery = "INSERT INTO `"+nameList+"` (`idCompany`,`nameCompany`) VALUES ('"+idCompany+"','"+nameCompany+"')";
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+
+
+        }
+        public void deleteCompanyFromList (string nameCompany, string emailCompany, string nameList)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+
+            string idCompany = "";
+            string sqlQuery = "SELECT id FROM Company where name ='" + nameCompany + "' AND email ='"+emailCompany+"'";
+            using (var commandReader = new MySqlCommand(sqlQuery, con))
+            {
+
+                using (var reader = commandReader.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        idCompany = (reader.GetString("id"));
+                    }
+                }
+            }
+            sqlQuery = "DELETE FROM `"+nameList+"` WHERE `idCompany` ='"+idCompany+"' AND `nameCompany` = '"+nameCompany+"'";
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+        }
         public void deleteList (string nameTable)
         {
             MySqlConnection con = ConnectionMySql();

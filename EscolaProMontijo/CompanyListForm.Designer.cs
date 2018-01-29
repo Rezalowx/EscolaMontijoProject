@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.comboBoxListCompanies = new System.Windows.Forms.ComboBox();
             this.labelList = new System.Windows.Forms.Label();
@@ -44,12 +44,13 @@
             // buttonConfirm
             // 
             this.buttonConfirm.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirm.Location = new System.Drawing.Point(377, 71);
+            this.buttonConfirm.Location = new System.Drawing.Point(345, 71);
             this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(75, 24);
+            this.buttonConfirm.Size = new System.Drawing.Size(115, 24);
             this.buttonConfirm.TabIndex = 0;
-            this.buttonConfirm.Text = "Confirm";
+            this.buttonConfirm.Text = "Save changes";
             this.buttonConfirm.UseVisualStyleBackColor = true;
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // comboBoxListCompanies
             // 
@@ -65,7 +66,7 @@
             // 
             this.labelList.AutoSize = true;
             this.labelList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelList.Location = new System.Drawing.Point(44, 41);
+            this.labelList.Location = new System.Drawing.Point(44, 52);
             this.labelList.Name = "labelList";
             this.labelList.Size = new System.Drawing.Size(31, 16);
             this.labelList.TabIndex = 2;
@@ -75,14 +76,14 @@
             // 
             this.dataGridViewCompanies.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewCompanies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCompanies.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCompanies.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCompanies.Location = new System.Drawing.Point(47, 135);
             this.dataGridViewCompanies.Name = "dataGridViewCompanies";
             this.dataGridViewCompanies.Size = new System.Drawing.Size(1292, 527);
