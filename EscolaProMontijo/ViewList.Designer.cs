@@ -59,7 +59,7 @@
             // 
             this.labelChooseAList.AutoSize = true;
             this.labelChooseAList.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChooseAList.Location = new System.Drawing.Point(53, 33);
+            this.labelChooseAList.Location = new System.Drawing.Point(53, 41);
             this.labelChooseAList.Name = "labelChooseAList";
             this.labelChooseAList.Size = new System.Drawing.Size(90, 16);
             this.labelChooseAList.TabIndex = 1;
@@ -126,6 +126,7 @@
             this.buttonAddCompany.TabIndex = 7;
             this.buttonAddCompany.Text = "Add";
             this.buttonAddCompany.UseVisualStyleBackColor = true;
+            this.buttonAddCompany.Click += new System.EventHandler(this.buttonAddCompany_Click);
             // 
             // buttonDeleteCompany
             // 
@@ -136,6 +137,7 @@
             this.buttonDeleteCompany.TabIndex = 8;
             this.buttonDeleteCompany.Text = "Delete";
             this.buttonDeleteCompany.UseVisualStyleBackColor = true;
+            this.buttonDeleteCompany.Click += new System.EventHandler(this.buttonDeleteCompany_Click);
             // 
             // comboBoxEmail
             // 
@@ -143,7 +145,7 @@
             this.comboBoxEmail.FormattingEnabled = true;
             this.comboBoxEmail.Location = new System.Drawing.Point(418, 115);
             this.comboBoxEmail.Name = "comboBoxEmail";
-            this.comboBoxEmail.Size = new System.Drawing.Size(179, 24);
+            this.comboBoxEmail.Size = new System.Drawing.Size(209, 24);
             this.comboBoxEmail.TabIndex = 9;
             this.comboBoxEmail.Visible = false;
             // 

@@ -13,9 +13,12 @@ namespace EscolaProMontijo
 {
     public partial class ViewList : Form
     {
+
         DataSet ds = new DataSet();
         MySqlDataAdapter dataAdapter;
         connectionMySql connectionDB = new connectionMySql();
+
+
         public ViewList()
         {
             InitializeComponent();
@@ -30,7 +33,7 @@ namespace EscolaProMontijo
                 
                 connectionDB.ConnectionMySql();
                 comboBoxList.Items.Clear();
-
+                
 
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -49,23 +52,19 @@ namespace EscolaProMontijo
         {
             
             connectionDB.ConnectionMySql();
+            comboBoxCompany.Items.Clear();
 
-            string tableList = comboBoxList.Text;
-            string sqlCommand = "SELECT name FROM company";
+            
+            string sqlCommand = "SELECT DISTINCT name FROM company";
             connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxCompany, "name");
 
             if (dataGridViewList.ColumnCount != 0)
             {
                 ds.Tables["bddmontijotest"].Columns.Clear();   // Clear column of database
                 ds.Tables["bddmontijotest"].Rows.Clear(); // Clear Rows of database
-                //ds.Clear();
+                
             }
 
-
-            // FIX THIS 
-
-           
-         
             try
             {
                 
@@ -95,11 +94,12 @@ namespace EscolaProMontijo
             {
                 dataAdapter.Update(ds, "bddmontijotest");
                 MessageBox.Show("Database updated");
+                comboBox1_SelectedIndexChanged(sender, e);
             }
             catch
             {
                 MessageBox.Show("Error, database is not updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                comboBox1_SelectedIndexChanged(sender, e);
+                
             }
 
         }
@@ -135,6 +135,7 @@ namespace EscolaProMontijo
         {
             connectionDB.ConnectionMySql();
 
+            
             comboBoxEmail.Items.Clear();
             comboBoxEmail.Visible = false;
             labelEmail.Visible = false;
@@ -148,6 +149,42 @@ namespace EscolaProMontijo
                 comboBoxEmail.Visible = true;
                 labelEmail.Visible = true;
             }
+        }
+
+        private void buttonAddCompany_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                connectionDB.addCompanyToList(comboBoxCompany.Text, comboBoxEmail.Text, comboBoxList.Text);
+                comboBox1_SelectedIndexChanged(null, null);
+            }
+            catch
+            {
+                MessageBox.Show("Error, the list is not updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        private void buttonDeleteCompany_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = MessageBox.Show("Are you sure ?", "Confirmation", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    connectionDB.deleteCompanyFromList(comboBoxCompany.Text, comboBoxEmail.Text, comboBoxList.Text);
+                    comboBox1_SelectedIndexChanged(null, null);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error, the list is not updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
     }
 }

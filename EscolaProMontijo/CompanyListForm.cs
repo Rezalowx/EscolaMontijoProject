@@ -36,20 +36,63 @@ namespace EscolaProMontijo
             connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxListCompanies, "available");
 
             sqlCommand = "SELECT * FROM company ORDER BY name";
-            connectionDB.getData(sqlCommand, dataGridViewCompanies, bindingSourceCompanies);
+            dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString());
+            // 3. fill in insert, update, and delete commands
+            MySqlCommandBuilder cmdBldr = new MySqlCommandBuilder(dataAdapter);
+            dataAdapter.Fill(ds, "bddmontijotest");
+            dataGridViewCompanies.DataSource = ds;
+            dataGridViewCompanies.DataMember = "bddmontijotest";
 
-           
+
         }
 
         private void comboBoxListCompanies_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            string parameter = comboBoxListCompanies.Text;
-            string sqlQuery = "SELECT c.* FROM " + parameter + " l JOIN company c ON c.id = l.idCompany";
-            connectionDB.getData(sqlQuery, dataGridViewCompanies, bindingSourceCompanies);
 
+            if (dataGridViewCompanies.ColumnCount != 0)
+            {
+                ds.Tables["bddmontijotest"].Columns.Clear();   // Clear column of database
+                ds.Tables["bddmontijotest"].Rows.Clear(); // Clear Rows of database
+
+            }
+
+            try
+            {
+
+
+                string parameter = comboBoxListCompanies.Text;
+                string sqlQuery = "SELECT c.* FROM " + parameter + " l JOIN company c ON c.id = l.idCompany";
+                dataAdapter = new MySqlDataAdapter(sqlQuery, connectionDB.getMyconnectionString());
+                // 3. fill in insert, update, and delete commands
+                MySqlCommandBuilder cmdBldr = new MySqlCommandBuilder(dataAdapter);
+                dataAdapter.Fill(ds, "bddmontijotest");
+                dataGridViewCompanies.DataSource = ds;
+                dataGridViewCompanies.DataMember = "bddmontijotest";
+
+            }
+            catch
+            {
+
+            }
             
 
+
+
+        }
+
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataAdapter.Update(ds, "bddmontijotest");
+                MessageBox.Show("Database updated");
+                CompanyListForm_Load(null, null);        ////// FIX THIS
+            }
+            catch
+            {
+                MessageBox.Show("Error, database is not updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }
