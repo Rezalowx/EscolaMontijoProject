@@ -24,7 +24,8 @@ namespace EscolaProMontijo
 
             try
             {
-                connectionDB.deleteCompany(comboBoxCompany.Text, comboBoxEmail.Text);
+                if (comboBoxCompany.Text != null && comboBoxEmail.Text != null)
+                connectionDB.deleteCompany(comboBoxCompany.Text, comboBoxEmail.Text);    // FIX THIS DAMNIT
                 MessageBox.Show("Company deleted");
                 DeleteACompanyForm_Load(null, null);
                 comboBoxCompany.Text = null;
@@ -56,6 +57,7 @@ namespace EscolaProMontijo
             comboBoxEmail.Text = "";
             string sqlQuery = "SELECT email FROM company WHERE name='" + comboBoxCompany.Text + "'";
             connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxEmail, "email");
+            comboBoxEmail.Text = comboBoxEmail.Items[0].ToString(); 
         }
     }
 }
