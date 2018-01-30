@@ -26,22 +26,35 @@ namespace EscolaProMontijo
 
         private void CompanyListForm_Load(object sender, EventArgs e)
         {
-            dataGridViewCompanies.DataSource = bindingSourceCompanies;
+            
             
             connectionDB.ConnectionMySql();
             dataGridViewCompanies.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
 
-            connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxListCompanies, "available");
+            comboBoxListCompanies.Items.Clear();
+            ds.Clear();
 
-            sqlCommand = "SELECT * FROM company ORDER BY name";
-            dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString());
-            // 3. fill in insert, update, and delete commands
-            MySqlCommandBuilder cmdBldr = new MySqlCommandBuilder(dataAdapter);
-            dataAdapter.Fill(ds, "bddmontijotest");
-            dataGridViewCompanies.DataSource = ds;
-            dataGridViewCompanies.DataMember = "bddmontijotest";
+
+            try
+            {
+                string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
+
+                connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxListCompanies, "available");
+
+                sqlCommand = "SELECT * FROM company ORDER BY name";
+                dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString());
+                // 3. fill in insert, update, and delete commands
+                MySqlCommandBuilder cmdBldr = new MySqlCommandBuilder(dataAdapter);
+                dataAdapter.Fill(ds, "bddmontijotest");
+                dataGridViewCompanies.DataSource = ds;
+                dataGridViewCompanies.DataMember = "bddmontijotest";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
 
         }
@@ -70,9 +83,9 @@ namespace EscolaProMontijo
                 dataGridViewCompanies.DataMember = "bddmontijotest";
 
             }
-            catch
+            catch (Exception er)
             {
-
+                MessageBox.Show(er.ToString());
             }
             
 
@@ -86,7 +99,8 @@ namespace EscolaProMontijo
             {
                 dataAdapter.Update(ds, "bddmontijotest");
                 MessageBox.Show("Database updated");
-                CompanyListForm_Load(null, null);        ////// FIX THIS
+                MessageBox.Show(dataGridViewCompanies.ColumnCount.ToString());
+                CompanyListForm_Load(sender, e);        ////// FIX THIS
             }
             catch
             {
