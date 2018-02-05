@@ -190,14 +190,19 @@ namespace EscolaProMontijo
 
 
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="idSector"></param>
-        /// <param name="name"></param>
-        /// <param name="email"></param>
-        /// <param name="numero"></param>
-        /// <param name="address"></param>
+
+
+        public void createNewSignature(string name, string email, string signature)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+
+            string sqlQuery = "INSERT INTO user (name, email, signature) VALUES ( '" + name + "' , '" + email + "' , '" + signature + "');";
+
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+        }
+
         public void addNewCompany(string idSector, string name, string email, string numero, string address) // FIX THIS
         {
             MySqlConnection con = ConnectionMySql();
@@ -250,7 +255,27 @@ namespace EscolaProMontijo
                 }
             }
         }
+        public void PutQueryIntoTextBox(string querySql, TextBox textBox, string column)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
 
+            using (var command = new MySqlCommand(querySql, con))
+            {
+
+                using (var reader = command.ExecuteReader())
+                {
+                    //Iterate through the rows and add it to the combobox's items
+                    while (reader.Read())
+                    {
+
+                       textBox.Text =(reader.GetString(column));
+
+
+                    }
+                }
+            }
+        }
         /// <summary>
         /// Add a string[] into the last row of a datagridview
         /// </summary>

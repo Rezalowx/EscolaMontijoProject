@@ -164,10 +164,7 @@ namespace EscolaProMontijo
             dataGridViewList.Columns.Remove("idCompany");
         }
 
-        private void viewListsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
+  
 
         private void viewListsToolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -214,6 +211,26 @@ namespace EscolaProMontijo
         {
             DeleteACompanyForm deletecompany = new DeleteACompanyForm();
             deletecompany.ShowDialog();
+            Form1_Load(null, null);
+            comboBoxCompany.Text = null;
+            comboBoxSector.Text = null;
+            comboBoxEmail.Text = null;
+        }
+
+        private void createASignatureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Create_a_signature createSignature = new Create_a_signature();
+            createSignature.ShowDialog();
+            Form1_Load(null, null);
+            comboBoxCompany.Text = null;
+            comboBoxSector.Text = null;
+            comboBoxEmail.Text = null;
+        }
+
+        private void modifyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ModifyASignature modifySignature = new ModifyASignature();
+            modifySignature.ShowDialog();
             Form1_Load(null, null);
             comboBoxCompany.Text = null;
             comboBoxSector.Text = null;
@@ -283,5 +300,7 @@ namespace EscolaProMontijo
             }
         
         }
+
+     
     }
 }
