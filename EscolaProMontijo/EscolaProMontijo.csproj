@@ -70,6 +70,12 @@
     <Compile Include="Create a list.Designer.cs">
       <DependentUpon>Create a list.cs</DependentUpon>
     </Compile>
+    <Compile Include="Create a signature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Create a signature.Designer.cs">
+      <DependentUpon>Create a signature.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeleteACompanyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,12 @@
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyASignature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyASignature.Designer.cs">
+      <DependentUpon>ModifyASignature.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,11 +112,17 @@
     <EmbeddedResource Include="Create a list.resx">
       <DependentUpon>Create a list.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Create a signature.resx">
+      <DependentUpon>Create a signature.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeleteACompanyForm.resx">
       <DependentUpon>DeleteACompanyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyASignature.resx">
+      <DependentUpon>ModifyASignature.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
