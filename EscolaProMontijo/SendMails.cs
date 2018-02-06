@@ -12,7 +12,14 @@ namespace EscolaProMontijo
     {
 
 
-
+        /// <summary>
+        /// Send an email
+        /// </summary>
+        /// <param name="message">string message</param>
+        /// <param name="emailFrom">string email from</param>
+        /// <param name="emailTo">string email to</param>
+        /// <param name="subject">string email's subject</param>
+        /// <param name="attachment">List<string> of attachments (paths) </param>
 
         public void sendAMail(string message, string emailFrom, string emailTo, string subject, List<string> attachment)
         {

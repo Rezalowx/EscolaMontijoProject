@@ -21,7 +21,7 @@ namespace EscolaProMontijo
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(textBoxSignature.Text) || string.IsNullOrWhiteSpace(textBoxName.Text) || string.IsNullOrWhiteSpace(textBoxEmail.Text))
+                if (string.IsNullOrWhiteSpace(textBoxSignature.Text) || string.IsNullOrWhiteSpace(textBoxName.Text) || string.IsNullOrWhiteSpace(textBoxEmail.Text)) // Checking if all textboxes are filled
                 {
                     MessageBox.Show("You have to fill everything !");
                     
@@ -30,7 +30,7 @@ namespace EscolaProMontijo
                 {
                     connectionMySql connectionDB = new connectionMySql();
 
-                    connectionDB.createNewSignature(textBoxName.Text, textBoxEmail.Text, textBoxSignature.Text);
+                    connectionDB.createNewSignature(textBoxName.Text, textBoxEmail.Text, textBoxSignature.Text);  // create the new signature with infos in textboxes
                     MessageBox.Show("New signature added !");
                     textBoxEmail.Text = null;
                     textBoxName.Text = null;
