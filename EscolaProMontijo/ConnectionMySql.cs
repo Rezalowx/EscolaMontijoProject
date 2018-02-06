@@ -9,7 +9,7 @@ namespace EscolaProMontijo
 {
     class connectionMySql
     {
-        private string MyconnectionString = "Server=127.0.0.1;Database=bddmontijotest;Uid=root;Pwd=";
+        private string MyconnectionString = "Server=127.0.0.1;Database=bddmontijotest;Uid=root;Pwd="; // credentials
 
         /// <summary>
         /// Connect to the database
@@ -41,12 +41,12 @@ namespace EscolaProMontijo
         }
        
         /// <summary>
-        /// Get data of sql query in a datagridview
+        /// Get data from a sql query into a datagridview
         /// </summary>
-        /// <param name="selectCommand">Sql query</param>
+        /// <param name="selectCommand">string sql query</param>
         /// <param name="dgv">Datagridview you want your data in</param>
         /// <param name="bindingSource">Binding source of the datagridview</param>
-        public void getData(string selectCommand, DataGridView dgv, BindingSource bindingSource) // Get et update les datas dans une dgv
+        public void getData(string selectCommand, DataGridView dgv, BindingSource bindingSource) 
         {
             try
             {
@@ -74,13 +74,11 @@ namespace EscolaProMontijo
                 MessageBox.Show(sql.ToString());
             }
         }
-
-       
-        
+      
         /// <summary>
-        /// 
+        /// Get the idSector from a sector name
         /// </summary>
-        /// <param name="sectorName"></param>
+        /// <param name="sectorName">string sector name</param>
         /// <returns></returns>
         public string getIdSectorFromName(string sectorName)
         {
@@ -98,8 +96,11 @@ namespace EscolaProMontijo
             }
         }
 
-
-        
+        /// <summary>
+        /// Create a new list (table) in the database and columns
+        /// </summary>
+        /// <param name="nameOfList">string name of the table</param>
+        /// <param name="columns">params string[] name of the column</param>
         public void createNewList(string nameOfList, params string[] columns)
         {
             MySqlConnection con = ConnectionMySql();
@@ -133,6 +134,12 @@ namespace EscolaProMontijo
 
         }
 
+        /// <summary>
+        /// Add a company to a list (table)
+        /// </summary>
+        /// <param name="nameCompany">string name of the company</param>
+        /// <param name="emailCompany">string email of the company</param>
+        /// <param name="nameList">string name of the list (table)</param>
         public void addCompanyToList (string nameCompany, string emailCompany, string nameList)
         {
             MySqlConnection con = ConnectionMySql();
@@ -156,13 +163,20 @@ namespace EscolaProMontijo
 
 
         }
+
+        /// <summary>
+        /// Delete a company in a table
+        /// </summary>
+        /// <param name="nameCompany">string name of the company</param>
+        /// <param name="emailCompany">string email of the company</param>
+        /// <param name="nameList">string name of the table</param>
         public void deleteCompanyFromList (string nameCompany, string emailCompany, string nameList)
         {
             MySqlConnection con = ConnectionMySql();
             con.Open();
 
             string idCompany = "";
-            string sqlQuery = "SELECT id FROM Company where name ='" + nameCompany + "' AND email ='"+emailCompany+"'";
+            string sqlQuery = "SELECT id FROM Company WHERE name ='" + nameCompany + "' AND email ='"+emailCompany+"'";
             using (var commandReader = new MySqlCommand(sqlQuery, con))
             {
 
@@ -178,6 +192,11 @@ namespace EscolaProMontijo
             var command = new MySqlCommand(sqlQuery, con);
             command.ExecuteNonQuery();
         }
+
+        /// <summary>
+        /// Delete a "list" (table) in database
+        /// </summary>
+        /// <param name="nameTable">string name of the table you want to delete</param>
         public void deleteList (string nameTable)
         {
             MySqlConnection con = ConnectionMySql();
@@ -188,10 +207,66 @@ namespace EscolaProMontijo
             var command = new MySqlCommand(sqlQuery, con);
             command.ExecuteNonQuery();
 
+        }
+
+        /// <summary>
+        /// Get the userid of a user
+        /// </summary>
+        /// <param name="name">name of a user you want the id</param>
+        /// <returns></returns>
+        public string getUserId(string name)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+
+            string userId = "";
+            string sqlQuery = "SELECT id FROM user WHERE name ='" + name + "'";
+
+            using (var command = new MySqlCommand(sqlQuery, con))
+            {
+
+                using (var reader = command.ExecuteReader())
+                {
+                    //Iterate through the rows and add it to the combobox's items
+                    while (reader.Read())
+                    {
+
+                        userId = (reader.GetString("id"));
+
+
+                    }
+                }
+            }
+
+            return userId;
 
         }
 
+        /// <summary>
+        /// Update table user with parameters
+        /// </summary>
+        /// <param name="name">string you want in the column name</param>
+        /// <param name="email">string you want in the column email</param>
+        /// <param name="signature">string you want in the column signature</param>
+        /// <param name="idUser">string you need to know which user you are updating</param>
+        public void modifySignature(string name, string email, string signature, string idUser)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+            
+            string sqlQuery = "UPDATE `user` SET `name` ='"+name+"', `email` = '"+email+"', `signature` = '"+signature+"' WHERE `user`.`id` = "+idUser+";";
 
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+
+
+        }
+        /// <summary>
+        /// Insert into user in the database.
+        /// </summary>
+        /// <param name="name">string you want in the column name</param>
+        /// <param name="email">string you want in the column email</param>
+        /// <param name="signature">string you want in the the column signature</param>
         public void createNewSignature(string name, string email, string signature)
         {
             MySqlConnection con = ConnectionMySql();
@@ -203,6 +278,14 @@ namespace EscolaProMontijo
             command.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// Insert into company in the database.
+        /// </summary>
+        /// <param name="idSector">string you want in the column idSector</param>
+        /// <param name="name">string you want in the column name</param>
+        /// <param name="email">string you want in the column email</param>
+        /// <param name="numero">string you want in the column numero</param>
+        /// <param name="address">string you want in the column address</param>
         public void addNewCompany(string idSector, string name, string email, string numero, string address) // FIX THIS
         {
             MySqlConnection con = ConnectionMySql();
@@ -214,6 +297,12 @@ namespace EscolaProMontijo
             command.ExecuteNonQuery();
             
         }
+
+        /// <summary>
+        /// Delete a company in database
+        /// </summary>
+        /// <param name="name">string of the company name you want to delete</param>
+        /// <param name="email">string of the company email you want to delete</param>
         public void deleteCompany(string name, string email)
         {
             MySqlConnection con = ConnectionMySql();
@@ -229,11 +318,11 @@ namespace EscolaProMontijo
         }
 
         /// <summary>
-        /// 
+        /// Put the result of a query into a combobox
         /// </summary>
         /// <param name="querySql">a sql query</param>
         /// <param name="combobox">the combobox you want the result of the query in</param>
-        /// <param name="column"column of the table you want in your combobox</param>
+        /// <param name="column">column of the table you want in your combobox</param>
         public void PutQueryIntoComboBox(string querySql, ComboBox combobox, string column)
         {
             MySqlConnection con = ConnectionMySql();
@@ -255,6 +344,13 @@ namespace EscolaProMontijo
                 }
             }
         }
+
+        /// <summary>
+        /// Put the result of a query into a textbox
+        /// </summary>
+        /// <param name="querySql">a sql query</param>
+        /// <param name="textBox">the textbox you want the result of the query in</param>
+        /// <param name="column">column of the table you want in your textbox</param>
         public void PutQueryIntoTextBox(string querySql, TextBox textBox, string column)
         {
             MySqlConnection con = ConnectionMySql();
@@ -268,29 +364,25 @@ namespace EscolaProMontijo
                     //Iterate through the rows and add it to the combobox's items
                     while (reader.Read())
                     {
-
                        textBox.Text =(reader.GetString(column));
-
 
                     }
                 }
             }
         }
+
         /// <summary>
-        /// Add a string[] into the last row of a datagridview
+        /// Add a List<string> from method PutListofStringIntoLastRows into the last row of a datagridview
         /// </summary>
         /// <param name="dgv">datagridview you work with</param>
         /// <param name="bs">binding source of the datagridview</param>
-        /// <param name="array">valid array you want to add</param>
-
-        public void PutListofRowsIntoLastRows(DataGridView dgv, BindingSource bs, List<string[]> listofRows)
+        /// <param name="listofRows">list you want to add</param>
+        public void PutListofStringIntoLastRows(DataGridView dgv, BindingSource bs, List<string[]> listofRows)
         {
 
-            
             foreach (string[] rows in listofRows)
             {
-
-            
+       
             DataTable dataTable = (DataTable)bs.DataSource;
 
             DataRow newRow = dataTable.NewRow();
@@ -311,7 +403,13 @@ namespace EscolaProMontijo
                 DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
 
         }
-        public List<String[]> getInfosinStringArrayOfQuery(string querysql)
+
+        /// <summary>
+        /// Get a list<string[]> as index [0],[1],[2],[3] = [name], [email], [numero], [address] (columns from company)
+        /// </summary>
+        /// <param name="querysql">string sql query (select from company)</param>
+        /// <returns></returns>
+        public List<String[]> getInfosinStringArrayOfQueryCompany(string querysql)
         {
             MySqlConnection con = ConnectionMySql();
             con.Open();
@@ -351,6 +449,13 @@ namespace EscolaProMontijo
                 }
             }
         }
+
+        /// <summary>
+        /// Delete the company you want in a datagridview
+        /// </summary>
+        /// <param name="companyToDelete">string of the name of the company you want to delete</param>
+        /// <param name="emailToDelete">string of the name of the company you want to delete</param>
+        /// <param name="dgv">datagridview you are working with</param>
         public void DeleteCompanyInDatagridView(string companyToDelete, string emailToDelete, DataGridView dgv)
         {
             for (int i = 0; i < dgv.Rows.Count - 1; i++)
@@ -363,8 +468,6 @@ namespace EscolaProMontijo
                 }
             }
         }
-
-
 
 
     }

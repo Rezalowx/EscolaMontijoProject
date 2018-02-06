@@ -94,7 +94,7 @@ namespace EscolaProMontijo
                 string addCompany = comboBoxCompany.Text;
                 string emailCheck = comboBoxEmail.Text;
                 string querysql = "SELECT c.name, c.email, c.numero, c.address FROM company c where name ='" + addCompany + "' AND c.email ='" + emailCheck + "'";
-                List<string[]> ListNewRow = connectionDB.getInfosinStringArrayOfQuery(querysql);
+                List<string[]> ListNewRow = connectionDB.getInfosinStringArrayOfQueryCompany(querysql);
                 bool identicals = false;
 
                 if (dataGridViewList.RowCount == 0)
@@ -121,7 +121,7 @@ namespace EscolaProMontijo
                     if (identicals == false)
                     {
 
-                        connectionDB.PutListofRowsIntoLastRows(dataGridViewList, bindingSourceList, ListNewRow);
+                        connectionDB.PutListofStringIntoLastRows(dataGridViewList, bindingSourceList, ListNewRow);
                     }
 
                 }
