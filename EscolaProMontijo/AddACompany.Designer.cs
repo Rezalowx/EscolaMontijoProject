@@ -43,11 +43,11 @@
             // 
             // buttonSaveCompany
             // 
-            this.buttonSaveCompany.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveCompany.Font = new System.Drawing.Font("Tahoma", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSaveCompany.Location = new System.Drawing.Point(495, 194);
             this.buttonSaveCompany.Name = "buttonSaveCompany";
             this.buttonSaveCompany.Size = new System.Drawing.Size(150, 26);
-            this.buttonSaveCompany.TabIndex = 0;
+            this.buttonSaveCompany.TabIndex = 6;
             this.buttonSaveCompany.Text = "Save";
             this.buttonSaveCompany.UseVisualStyleBackColor = true;
             this.buttonSaveCompany.Click += new System.EventHandler(this.buttonSaveCompany_Click);
@@ -66,7 +66,7 @@
             this.textBoxNumero.Location = new System.Drawing.Point(495, 88);
             this.textBoxNumero.Name = "textBoxNumero";
             this.textBoxNumero.Size = new System.Drawing.Size(150, 26);
-            this.textBoxNumero.TabIndex = 2;
+            this.textBoxNumero.TabIndex = 3;
             // 
             // textBoxEmailCompany
             // 
@@ -74,7 +74,7 @@
             this.textBoxEmailCompany.Location = new System.Drawing.Point(269, 88);
             this.textBoxEmailCompany.Name = "textBoxEmailCompany";
             this.textBoxEmailCompany.Size = new System.Drawing.Size(150, 26);
-            this.textBoxEmailCompany.TabIndex = 3;
+            this.textBoxEmailCompany.TabIndex = 2;
             // 
             // textBoxAddressCompany
             // 
@@ -132,7 +132,7 @@
             this.comboBoxSector.Location = new System.Drawing.Point(269, 194);
             this.comboBoxSector.Name = "comboBoxSector";
             this.comboBoxSector.Size = new System.Drawing.Size(150, 26);
-            this.comboBoxSector.TabIndex = 9;
+            this.comboBoxSector.TabIndex = 5;
             this.comboBoxSector.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // labelSector

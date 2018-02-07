@@ -25,7 +25,7 @@ namespace EscolaProMontijo
             connectionDB.ConnectionMySql();
 
             string sqlQuery = "SELECT name FROM sector";
-            connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxSector, "name");
+            connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxSector, "name");  // Use method to add query into the comboBoxSector
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -41,14 +41,21 @@ namespace EscolaProMontijo
 
             try
             {
-                if (textBoxNameCompany.Text != "")
+                if (textBoxNameCompany.Text != "" && comboBoxSector.Text != "")  // create the company into the database
                 {
                     connectionDB.addNewCompany(connectionDB.getIdSectorFromName(comboBoxSector.Text), textBoxNameCompany.Text, textBoxEmailCompany.Text, textBoxNumero.Text, textBoxAddressCompany.Text);
                     MessageBox.Show("Database updated !");
                 }
                 else
                 {
-                    MessageBox.Show("Add at least a company name !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (textBoxNameCompany.Text == "")
+                    {
+                        MessageBox.Show("Add at least a company name !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("You must choose a sector !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
             catch

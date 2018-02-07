@@ -49,12 +49,17 @@ namespace EscolaProMontijo
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxChooseList, "available");
 
                 comboBoxSector.Items.Clear();
-                sqlCommand = "SELECT name FROM sector";
+                comboBoxSector.Items.Add("All companies");
+                sqlCommand = "SELECT name FROM sector ORDER BY name";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxSector, "name");
 
                 comboBoxCompany.Items.Clear();
-                sqlCommand = "SELECT DISTINCT name from company";
+                sqlCommand = "SELECT DISTINCT name from company ORDER BY name";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxCompany, "name");
+
+                comboBoxSignature.Items.Clear();
+                sqlCommand = "SELECT name FROM user";
+                connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxSignature, "name");
 
                 comboBoxEmail.Visible = false;
 
@@ -76,12 +81,25 @@ namespace EscolaProMontijo
 
         private void comboBoxSector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            connectionDB.ConnectionMySql();
-            comboBoxCompany.Items.Clear();
-            string parameter = comboBoxSector.Text;
-            string sqlQuery = "SELECT DISTINCT company.name FROM company, sector WHERE company.idSector = sector.id AND sector.name ='"+parameter+"'";
-            connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxCompany, "name");
+            try
+            {
+                connectionDB.ConnectionMySql();
+                comboBoxCompany.Items.Clear();
+                string sqlQuery = "SELECT DISTINCT name FROM company";
+                if (comboBoxSector.Text == "All companies")
+                {
+                    connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxCompany, "name");
+                }
+                
+                
+                string parameter = comboBoxSector.Text;
+                sqlQuery = "SELECT DISTINCT company.name FROM company, sector WHERE company.idSector = sector.id AND sector.name ='" + parameter + "'";
+                connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxCompany, "name");
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
         }
         private void bt_Add_Click(object sender, EventArgs e)  
         {
@@ -264,12 +282,17 @@ namespace EscolaProMontijo
 
                 int nbRows = dataGridViewList.RowCount;
 
-                for (int row = 0; row < nbRows - 1; row++)
-                {
-                   
+                string signature = connectionDB.getSignature(connectionDB.getUserId(comboBoxSignature.Text));
+                string subject = textBoxSubjectMail.Text;
+                string emailFrom = "";
+                string message = textBoxTextMail.Text;
 
+                for (int row = 0; row < nbRows - 1; row++) //////////////////// FIX THIS OMG
+                {
+
+                    
                     SendMails sendmail = new SendMails();
-                    sendmail.sendAMail(textBoxTextMail.Text, "emailFrom", dataGridViewList.Rows[row].Cells[1].Value.ToString(), textBoxSubjectMail.Text, allAttachments);
+                    sendmail.sendAMail(message, emailFrom, dataGridViewList.Rows[row].Cells[1].Value.ToString(), subject, signature, allAttachments);
                 }
             }
             catch (Exception er)

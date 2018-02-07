@@ -279,6 +279,44 @@ namespace EscolaProMontijo
         }
 
         /// <summary>
+        /// Delete a signature from database
+        /// </summary>
+        /// <param name="userId">id of the signature/user</param>
+        public void deleteSignature(string userId)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+
+            
+            string sqlQuery = "DELETE FROM user WHERE id =" + userId+";";
+
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+        }
+
+        public string getSignature(string userId)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+            string signature = "";
+            
+            string sqlQuery = "SELECT signature FROM user WHERE id=" + userId;
+
+            using (var command = new MySqlCommand(sqlQuery, con))
+            {
+
+                using (var reader = command.ExecuteReader())
+                {                                  
+                    while (reader.Read())
+                    {
+                       signature = reader.GetString("signature");
+                    }
+                }
+            }
+
+            return signature;
+        }
+        /// <summary>
         /// Insert into company in the database.
         /// </summary>
         /// <param name="idSector">string you want in the column idSector</param>

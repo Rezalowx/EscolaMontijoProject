@@ -38,7 +38,7 @@ namespace EscolaProMontijo
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                 string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
-                connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxList, "available");
+                connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxList, "available");  // Use method to add the query to the comboBoxList
 
                 
             }
@@ -56,9 +56,9 @@ namespace EscolaProMontijo
 
             
             string sqlCommand = "SELECT DISTINCT name FROM company";
-            connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxCompany, "name");
+            connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxCompany, "name"); // Use method to add the query into the comboBoxCompany
 
-            if (dataGridViewList.ColumnCount != 0)
+            if (dataGridViewList.ColumnCount != 0) 
             {
                 ds.Tables["bddmontijotest"].Columns.Clear();   // Clear column of database
                 ds.Tables["bddmontijotest"].Rows.Clear(); // Clear Rows of database
@@ -69,11 +69,11 @@ namespace EscolaProMontijo
             {
                 
                 sqlCommand = "SELECT l.* FROM " + comboBoxList.Text + " l JOIN company c ON c.id = l.idCompany";
-                dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString());
+                dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString()); 
                 // 3. fill in insert, update, and delete commands
                 MySqlCommandBuilder cmdBldr = new MySqlCommandBuilder(dataAdapter);
-                dataAdapter.Fill(ds, "bddmontijotest");
-                dataGridViewList.DataSource = ds;
+                dataAdapter.Fill(ds, "bddmontijotest"); 
+                dataGridViewList.DataSource = ds;                                       // Fill the dataGridViewList
                 dataGridViewList.DataMember = "bddmontijotest";
 
                 
@@ -92,7 +92,7 @@ namespace EscolaProMontijo
         {
             try
             {
-                dataAdapter.Update(ds, "bddmontijotest");
+                dataAdapter.Update(ds, "bddmontijotest");                 // Save the changes and update the database
                 MessageBox.Show("Database updated");
                 comboBox1_SelectedIndexChanged(sender, e);
             }
@@ -117,7 +117,7 @@ namespace EscolaProMontijo
                 
                 if (result == DialogResult.OK)
                 {
-                    connectionDB.deleteList(comboBoxList.Text);
+                    connectionDB.deleteList(comboBoxList.Text);       // Use method to delete the list from database
                     MessageBox.Show("List deleted successfully");
                     comboBoxList.Text = null;
    
@@ -141,7 +141,7 @@ namespace EscolaProMontijo
             labelEmail.Visible = false;
 
             string sqlQuery = "SELECT email from company WHERE name='" + comboBoxCompany.Text + "'";
-            connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxEmail, "email");
+            connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxEmail, "email"); // Use method to put the query into the comboBoxEmail
             comboBoxEmail.Text = Convert.ToString(comboBoxEmail.Items[0]);
 
             if (comboBoxEmail.Items.Count > 1)
@@ -156,7 +156,7 @@ namespace EscolaProMontijo
 
             try
             {
-                connectionDB.addCompanyToList(comboBoxCompany.Text, comboBoxEmail.Text, comboBoxList.Text);
+                connectionDB.addCompanyToList(comboBoxCompany.Text, comboBoxEmail.Text, comboBoxList.Text); // Use method to add a company in the list
                 comboBox1_SelectedIndexChanged(null, null);
             }
             catch
@@ -175,7 +175,7 @@ namespace EscolaProMontijo
 
                 if (result == DialogResult.OK)
                 {
-                    connectionDB.deleteCompanyFromList(comboBoxCompany.Text, comboBoxEmail.Text, comboBoxList.Text);
+                    connectionDB.deleteCompanyFromList(comboBoxCompany.Text, comboBoxEmail.Text, comboBoxList.Text); // Use method to delete a company in the list
                     comboBox1_SelectedIndexChanged(null, null);
                 }
             }

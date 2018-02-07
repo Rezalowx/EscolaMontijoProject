@@ -35,6 +35,7 @@
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.comboBoxName = new System.Windows.Forms.ComboBox();
+            this.buttonDeleteSignature = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -87,9 +88,9 @@
             // buttonSaveChanges
             // 
             this.buttonSaveChanges.Font = new System.Drawing.Font("Tahoma", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSaveChanges.Location = new System.Drawing.Point(581, 375);
+            this.buttonSaveChanges.Location = new System.Drawing.Point(565, 375);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
-            this.buttonSaveChanges.Size = new System.Drawing.Size(111, 24);
+            this.buttonSaveChanges.Size = new System.Drawing.Size(127, 24);
             this.buttonSaveChanges.TabIndex = 7;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
@@ -105,12 +106,24 @@
             this.comboBoxName.TabIndex = 14;
             this.comboBoxName.SelectedIndexChanged += new System.EventHandler(this.comboBoxName_SelectedIndexChanged);
             // 
+            // buttonDeleteSignature
+            // 
+            this.buttonDeleteSignature.Font = new System.Drawing.Font("Tahoma", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteSignature.Location = new System.Drawing.Point(134, 375);
+            this.buttonDeleteSignature.Name = "buttonDeleteSignature";
+            this.buttonDeleteSignature.Size = new System.Drawing.Size(127, 24);
+            this.buttonDeleteSignature.TabIndex = 15;
+            this.buttonDeleteSignature.Text = "Delete signature";
+            this.buttonDeleteSignature.UseVisualStyleBackColor = true;
+            this.buttonDeleteSignature.Click += new System.EventHandler(this.buttonDeleteSignature_Click);
+            // 
             // ModifyASignature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(823, 446);
+            this.Controls.Add(this.buttonDeleteSignature);
             this.Controls.Add(this.comboBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -135,5 +148,6 @@
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Button buttonSaveChanges;
         private System.Windows.Forms.ComboBox comboBoxName;
+        private System.Windows.Forms.Button buttonDeleteSignature;
     }
 }

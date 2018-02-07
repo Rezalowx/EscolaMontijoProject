@@ -23,6 +23,11 @@ namespace EscolaProMontijo
 
         private void ModifyASignature_Load(object sender, EventArgs e)
         {
+            comboBoxName.Text = null;
+            textBoxSignature.Text = null;
+            textBoxEmail.Text = null;
+            comboBoxName.Items.Clear();
+
             string sqlQuery = "SELECT name FROM user";
             connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxName, "name");        // Put infos in combobox
 
@@ -61,5 +66,26 @@ namespace EscolaProMontijo
                 MessageBox.Show("Error : couldn't update the database");
             }
         }
+
+        private void buttonDeleteSignature_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = MessageBox.Show("Are you sure ?", "Confirmation", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    connectionDB.deleteSignature(idUser);  // Delete signature from database
+                    MessageBox.Show("Signature deleted successfully !");
+                    ModifyASignature_Load(null, null);
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Error : couldn't update the database");
+            }
+        }
+    
     }
 }
