@@ -280,20 +280,34 @@ namespace EscolaProMontijo
             try
             {
 
-                int nbRows = dataGridViewList.RowCount;
 
-                string signature = connectionDB.getSignature(connectionDB.getUserId(comboBoxSignature.Text));
+                int nbRows = dataGridViewList.RowCount;
+                progressBarSendingMail.Maximum = nbRows;
+                progressBarSendingMail.Step = 1;
+                progressBarSendingMail.Visible = true;
+                string signature = comboBoxSignature.Text;
+                if (!string.IsNullOrWhiteSpace(signature))
+                {
+                    signature = connectionDB.getSignature(connectionDB.getUserId(comboBoxSignature.Text));
+                }
+                
+                
                 string subject = textBoxSubjectMail.Text;
                 string emailFrom = "";
                 string message = textBoxTextMail.Text;
 
-                for (int row = 0; row < nbRows - 1; row++) //////////////////// FIX THIS OMG
+                for (int row = 0; row < nbRows - 1; row++) 
                 {
 
-                    
+                   
                     SendMails sendmail = new SendMails();
                     sendmail.sendAMail(message, emailFrom, dataGridViewList.Rows[row].Cells[1].Value.ToString(), subject, signature, allAttachments);
+
                 }
+
+                allAttachments.Clear();
+                textBoxBrowse.Text = null;
+                pictureBoxCancelBrowse.Visible = false;
             }
             catch (Exception er)
             {
@@ -305,25 +319,36 @@ namespace EscolaProMontijo
         {
            
            var resultFile = openFileDialog1.ShowDialog();
+           int lastline = textBoxBrowse.Lines.Length;
 
             if (resultFile == DialogResult.OK)
             {
-                int lastline = textBoxBrowse.Lines.Length;
-
-                if (lastline > 0)
-                {
-                    textBoxBrowse.AppendText("\n" + openFileDialog1.FileName);        // Append attachment to the textbox
-                }                                                                           
-                else
-                {
-                    textBoxBrowse.Text = openFileDialog1.FileName;
-                }
-
                 allAttachments.Add(openFileDialog1.FileName);               //Add attachments to the list
+                textBoxBrowse.AppendText(allAttachments.LastOrDefault());         // Append attachment to the textbox
+                textBoxBrowse.AppendText(Environment.NewLine);
+                
+                if (allAttachments.Count > 0)
+                {
+                    pictureBoxCancelBrowse.Visible = true;
+                }
+                
             }
-        
         }
 
-     
+        private void pictureBoxCancelBrowse_Click(object sender, EventArgs e)
+        {
+            
+                int chartodelete = allAttachments.LastOrDefault().Length;
+                allAttachments.RemoveAt(allAttachments.Count - 1);
+                textBoxBrowse.Text = textBoxBrowse.Text.Substring(0, textBoxBrowse.Text.Length - chartodelete - 2);
+
+                if (allAttachments.Count < 1)
+                {
+
+                    pictureBoxCancelBrowse.Visible = false;
+
+                }
+            
+        }
     }
 }
