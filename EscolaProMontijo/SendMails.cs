@@ -18,21 +18,17 @@ namespace EscolaProMontijo
         private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
             // Get the unique identifier for this asynchronous operation.
-            String token = (string)e.UserState;
+            ProgressBar token = (ProgressBar)e.UserState;
             
-
-            if (e.Cancelled)
-            {
-                MessageBox.Show(("[{0}] Send canceled."), token);
-            }
+            
             if (e.Error != null)
             {
-                MessageBox.Show( e.Error.ToString(), token);
+                MessageBox.Show( e.Error.ToString());
             }
             else
             {
 
-                // progress bar ????????
+                token.PerformStep();
                    
             }
             
@@ -48,7 +44,7 @@ namespace EscolaProMontijo
         /// <param name="subject">string email's subject</param>
         /// <param name="signature">string signature</param>
         /// <param name="attachment">List<string> of attachments (paths) </param>
-        public void sendAMail(string message, string emailFrom, string emailTo, string subject, string signature, List<string> attachment)
+        public void sendAMail(string message, string emailFrom, string emailTo, string subject, string signature, List<string> attachment, ProgressBar progressBarMail)
         {
 
 
@@ -75,15 +71,15 @@ namespace EscolaProMontijo
             MyMsg.From = new MailAddress("gregory.brugnet@gmail.com", "TCHOUPINOU'S APPLICATION FAIT DES TESTS SUR TWA");
             MyMsg.BodyEncoding = Encoding.UTF8;
             MyMsg.Body = message+"\n\n" + signature;
-            client.Credentials = new System.Net.NetworkCredential("gregory.brugnet@gmail.com", "passwordmdr");
+            client.Credentials = new System.Net.NetworkCredential("gregory.brugnet@gmail.com", "xDkikoolol1");
 
             client.SendCompleted += new
             SendCompletedEventHandler(SendCompletedCallback);
             // The userState can be any object that allows your callback  
             // method to identify this send operation. 
-            // For this example, the userToken is a string constant. 
-            string userState = "test message1";
-            client.SendAsync(MyMsg, userState);
+            
+            
+            client.SendAsync(MyMsg, progressBarMail);
 
             
             
