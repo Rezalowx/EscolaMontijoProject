@@ -71,7 +71,7 @@ namespace EscolaProMontijo
             MyMsg.From = new MailAddress("gregory.brugnet@gmail.com", "TCHOUPINOU'S APPLICATION FAIT DES TESTS SUR TWA");
             MyMsg.BodyEncoding = Encoding.UTF8;
             MyMsg.Body = message+"\n\n" + signature;
-            client.Credentials = new System.Net.NetworkCredential("gregory.brugnet@gmail.com", "xDkikoolol1");
+            client.Credentials = new System.Net.NetworkCredential("gregory.brugnet@gmail.com", "passwordlol");
 
             client.SendCompleted += new
             SendCompletedEventHandler(SendCompletedCallback);
