@@ -25,7 +25,7 @@ namespace EscolaProMontijo
             try
             {
                 if (comboBoxCompany.Text != null && comboBoxEmail.Text != null)
-                connectionDB.deleteCompany(comboBoxCompany.Text, comboBoxEmail.Text);    // FIX THIS DAMNIT
+                connectionDB.deleteCompany(comboBoxCompany.Text, comboBoxEmail.Text);    
                 MessageBox.Show("Company deleted");
                 DeleteACompanyForm_Load(null, null);
                 comboBoxCompany.Text = null;
