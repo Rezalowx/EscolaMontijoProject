@@ -281,56 +281,33 @@ namespace EscolaProMontijo
             {
 
 
+                int nbRows = dataGridViewList.RowCount;
+                progressBarSendingMail.Maximum = nbRows;
+                progressBarSendingMail.Step = 1;
+                progressBarSendingMail.Visible = true;
                 string signature = comboBoxSignature.Text;
+                if (!string.IsNullOrWhiteSpace(signature))
+                {
+                    signature = connectionDB.getSignature(connectionDB.getUserId(comboBoxSignature.Text));
+                }
+                
+                
                 string subject = textBoxSubjectMail.Text;
                 string emailFrom = "";
                 string message = textBoxTextMail.Text;
 
-                if (!string.IsNullOrWhiteSpace(subject) && !string.IsNullOrWhiteSpace(message))
+                for (int row = 0; row < nbRows - 1; row++) 
                 {
 
+                   
+                    SendMails sendmail = new SendMails();
+                    sendmail.sendAMail(message, emailFrom, dataGridViewList.Rows[row].Cells[1].Value.ToString(), subject, signature, allAttachments);
 
-                    int nbRows = dataGridViewList.RowCount;
-                    progressBarSendingMail.Maximum = nbRows - 1;
-                    progressBarSendingMail.Step = 1;
-                    progressBarSendingMail.Value = 0;
-                    progressBarSendingMail.Visible = true;
-
-
-
-                    if (!string.IsNullOrWhiteSpace(signature))
-                    {
-                        signature = connectionDB.getSignature(connectionDB.getUserId(comboBoxSignature.Text));
-                    }
-
-
-
-
-                    for (int row = 0; row < nbRows - 1; row++)
-                    {
-
-                        SendMails sendmail = new SendMails();
-                        sendmail.sendAMail(message, emailFrom, dataGridViewList.Rows[row].Cells[1].Value.ToString(), subject, signature, allAttachments, progressBarSendingMail);
-
-
-                    }
-
-                    allAttachments.Clear();
-                    textBoxBrowse.Text = null;
-                    pictureBoxCancelBrowse.Visible = false;
                 }
-                else
-                {
-                    if (string.IsNullOrWhiteSpace(message))
-                    {
-                        MessageBox.Show("Email is empty, please write a message.", "Warning : email empty", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    else
-                    {
-                        MessageBox.Show("subject is empty, please write a subject.", "Warning : subject empty", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-                
+
+                allAttachments.Clear();
+                textBoxBrowse.Text = null;
+                pictureBoxCancelBrowse.Visible = false;
             }
             catch (Exception er)
             {
