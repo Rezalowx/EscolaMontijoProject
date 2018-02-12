@@ -75,6 +75,9 @@
             this.textBoxBrowse = new System.Windows.Forms.TextBox();
             this.progressBarSendingMail = new System.Windows.Forms.ProgressBar();
             this.pictureBoxCancelBrowse = new System.Windows.Forms.PictureBox();
+            this.sectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createASectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifySectorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewList)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEscola)).BeginInit();
@@ -238,7 +241,8 @@
             this.menuToolStripMenuItem,
             this.addListsToolStripMenuViewLists,
             this.ToolStripMenuAddACompany,
-            this.ToolStripMenuCreateASignature});
+            this.ToolStripMenuCreateASignature,
+            this.sectorToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1358, 24);
@@ -279,14 +283,14 @@
             // viewListsToolStripMenuItem1
             // 
             this.viewListsToolStripMenuItem1.Name = "viewListsToolStripMenuItem1";
-            this.viewListsToolStripMenuItem1.Size = new System.Drawing.Size(135, 22);
+            this.viewListsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.viewListsToolStripMenuItem1.Text = "Create a list";
             this.viewListsToolStripMenuItem1.Click += new System.EventHandler(this.CreateListsToolStripMenuItem1_Click);
             // 
             // viewListsToolStripMenuItem2
             // 
             this.viewListsToolStripMenuItem2.Name = "viewListsToolStripMenuItem2";
-            this.viewListsToolStripMenuItem2.Size = new System.Drawing.Size(135, 22);
+            this.viewListsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.viewListsToolStripMenuItem2.Text = "View lists";
             this.viewListsToolStripMenuItem2.Click += new System.EventHandler(this.viewListsToolStripMenuItem2_Click);
             // 
@@ -465,6 +469,28 @@
             this.pictureBoxCancelBrowse.WaitOnLoad = true;
             this.pictureBoxCancelBrowse.Click += new System.EventHandler(this.pictureBoxCancelBrowse_Click);
             // 
+            // sectorToolStripMenuItem
+            // 
+            this.sectorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createASectorToolStripMenuItem,
+            this.modifySectorsToolStripMenuItem});
+            this.sectorToolStripMenuItem.Name = "sectorToolStripMenuItem";
+            this.sectorToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.sectorToolStripMenuItem.Text = "Sector";
+            this.sectorToolStripMenuItem.Click += new System.EventHandler(this.sectorToolStripMenuItem_Click);
+            // 
+            // createASectorToolStripMenuItem
+            // 
+            this.createASectorToolStripMenuItem.Name = "createASectorToolStripMenuItem";
+            this.createASectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createASectorToolStripMenuItem.Text = "Create a sector";
+            // 
+            // modifySectorsToolStripMenuItem
+            // 
+            this.modifySectorsToolStripMenuItem.Name = "modifySectorsToolStripMenuItem";
+            this.modifySectorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modifySectorsToolStripMenuItem.Text = "Modify...";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -555,6 +581,9 @@
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem1;
         private System.Windows.Forms.ProgressBar progressBarSendingMail;
         private System.Windows.Forms.PictureBox pictureBoxCancelBrowse;
+        private System.Windows.Forms.ToolStripMenuItem sectorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createASectorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifySectorsToolStripMenuItem;
     }
 }
 

@@ -47,6 +47,7 @@ namespace EscolaProMontijo
                 comboBoxChooseList.Items.Clear();
                 string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxChooseList, "available");
+                
 
                 comboBoxSector.Items.Clear();
                 comboBoxSector.Items.Add("All companies");
@@ -60,6 +61,7 @@ namespace EscolaProMontijo
                 comboBoxSignature.Items.Clear();
                 sqlCommand = "SELECT name FROM user";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxSignature, "name");
+                comboBoxSignature.Text = comboBoxSignature.Items[0].ToString();
 
                 comboBoxEmail.Visible = false;
 
@@ -282,42 +284,48 @@ namespace EscolaProMontijo
 
 
                 string signature = comboBoxSignature.Text;
-                string subject = textBoxSubjectMail.Text;
+                string subject = textBoxSubjectMail.Text;                // Initialize what we need to send mails
                 string emailFrom = "";
                 string message = textBoxTextMail.Text;
 
                 if (!string.IsNullOrWhiteSpace(subject) && !string.IsNullOrWhiteSpace(message))
                 {
-
-
-                    int nbRows = dataGridViewList.RowCount;
-                    progressBarSendingMail.Maximum = nbRows - 1;
-                    progressBarSendingMail.Step = 1;
-                    progressBarSendingMail.Value = 0;
-                    progressBarSendingMail.Visible = true;
-
-
-
+                    try
+                    {
+                        signature = connectionDB.getSignature(connectionDB.getUserId(comboBoxSignature.Text)); //get signature
+                    }
+                    catch
+                    {
+                        signature = "";
+                    }
                     if (!string.IsNullOrWhiteSpace(signature))
                     {
-                        signature = connectionDB.getSignature(connectionDB.getUserId(comboBoxSignature.Text));
+
+
+                        int nbRows = dataGridViewList.RowCount;
+                        progressBarSendingMail.Maximum = nbRows - 1;
+                        progressBarSendingMail.Step = 1;                            // Initialize the progressBar
+                        progressBarSendingMail.Value = 0;
+                        progressBarSendingMail.Visible = true;
+
+
+                        for (int row = 0; row < nbRows - 1; row++)
+                        {
+
+                            SendMails sendmail = new SendMails();
+                            sendmail.sendAMail(message, emailFrom, dataGridViewList.Rows[row].Cells[1].Value.ToString(), subject, signature, allAttachments, progressBarSendingMail); //Sending mail and updating progressBar
+
+
+                        }
+
+                        allAttachments.Clear();
+                        textBoxBrowse.Text = null;
+                        pictureBoxCancelBrowse.Visible = false;
                     }
-
-
-
-
-                    for (int row = 0; row < nbRows - 1; row++)
+                    else
                     {
-
-                        SendMails sendmail = new SendMails();
-                        sendmail.sendAMail(message, emailFrom, dataGridViewList.Rows[row].Cells[1].Value.ToString(), subject, signature, allAttachments, progressBarSendingMail);
-
-
+                        MessageBox.Show("Signature is empty or is wrong", "Warning : email empty", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
-
-                    allAttachments.Clear();
-                    textBoxBrowse.Text = null;
-                    pictureBoxCancelBrowse.Visible = false;
                 }
                 else
                 {
@@ -327,7 +335,9 @@ namespace EscolaProMontijo
                     }
                     else
                     {
-                        MessageBox.Show("subject is empty, please write a subject.", "Warning : subject empty", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                       
+                            MessageBox.Show("subject is empty, please write a subject.", "Warning : subject empty", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        
                     }
                 }
                 
@@ -352,7 +362,7 @@ namespace EscolaProMontijo
                 
                 if (allAttachments.Count > 0)
                 {
-                    pictureBoxCancelBrowse.Visible = true;
+                    pictureBoxCancelBrowse.Visible = true;        //if there is attachment, picturebox there is
                 }
                 
             }
@@ -361,17 +371,20 @@ namespace EscolaProMontijo
         private void pictureBoxCancelBrowse_Click(object sender, EventArgs e)
         {
             
-                int chartodelete = allAttachments.LastOrDefault().Length;
-                allAttachments.RemoveAt(allAttachments.Count - 1);
-                textBoxBrowse.Text = textBoxBrowse.Text.Substring(0, textBoxBrowse.Text.Length - chartodelete - 2);
+                int chartodelete = allAttachments.LastOrDefault().Length; 
+                allAttachments.RemoveAt(allAttachments.Count - 1);          //Remove attachment from list
+                textBoxBrowse.Text = textBoxBrowse.Text.Substring(0, textBoxBrowse.Text.Length - chartodelete - 2); // Remove attachment from textbox
 
                 if (allAttachments.Count < 1)
                 {
-
-                    pictureBoxCancelBrowse.Visible = false;
-
+                    pictureBoxCancelBrowse.Visible = false;         // No more attachments, no more pictureBox
                 }
             
+        }
+
+        private void sectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
