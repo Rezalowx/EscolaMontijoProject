@@ -221,25 +221,26 @@ namespace EscolaProMontijo
 
             string userId = "";
             string sqlQuery = "SELECT id FROM user WHERE name ='" + name + "'";
-
-            using (var command = new MySqlCommand(sqlQuery, con))
             {
-
-                using (var reader = command.ExecuteReader())
+                using (var command = new MySqlCommand(sqlQuery, con))
                 {
-                    //Iterate through the rows and add it to the combobox's items
-                    while (reader.Read())
+
+                    using (var reader = command.ExecuteReader())
                     {
+                        //Iterate through the rows and add it to the combobox's items
+                        while (reader.Read())
+                        {
 
-                        userId = (reader.GetString("id"));
+                            userId = (reader.GetString("id"));
 
 
+                        }
                     }
                 }
+
+                return userId;
             }
-
-            return userId;
-
+            
         }
 
         /// <summary>
@@ -294,8 +295,15 @@ namespace EscolaProMontijo
             command.ExecuteNonQuery();
         }
 
+        
+        /// <summary>
+        /// Get the signature
+        /// </summary>
+        /// <param name="userId">string userID in the database</param>
+        /// <returns></returns>
         public string getSignature(string userId)
         {
+
             MySqlConnection con = ConnectionMySql();
             con.Open();
             string signature = "";

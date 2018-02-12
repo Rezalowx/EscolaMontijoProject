@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Jan-2018 às 17:58
--- Versão do servidor: 10.1.29-MariaDB
+-- Generation Time: Feb 12, 2018 at 05:59 PM
+-- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `company`
+-- Table structure for table `company`
 --
 
 CREATE TABLE `company` (
@@ -38,20 +38,22 @@ CREATE TABLE `company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Extraindo dados da tabela `company`
+-- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id`, `idSector`, `name`, `email`, `Numero`, `address`) VALUES
 (1, 3, 'Carrefour', 'carrefour@email.com', '0141450505', '3 rue adresse de Carrefour'),
-(2, 3, 'Intermarche', 'intermarche@email.com', '9999999999', '5 rue adresse d\'Intermarche'),
+(2, 3, 'Intermarche', 'intermarche@email.com', 'numintermarche', '5 rue adresse d\'Intermarche'),
 (3, 1, 'Apple', 'apple@email.com', '0133713370', '1337 rue d\'Apple'),
-(4, 1, 'Microsoft', 'microsoft@email.com', '1212121212', '12 adresse rue de Microsoft'),
-(5, 1, 'Microsoft', 'microsoft666@email.com', '7787777877', '666 rue adresse de Microsoft');
+(4, 1, 'Microsoft', 'microsoft@email.com', 'nummicrosoft', '12 adresse rue de Microsoft'),
+(5, 1, 'Microsoft', 'microsoft666@email.com', '7787777877', '666 rue adresse de Microsoft'),
+(6, 1, 'GregCompany', 'gregory.brugnet@gmail.com', 'osefdunum', 'osefdeladresse'),
+(7, 1, 'GregCompany', 'cakeizalie@hotmail.fr', 'osefdunum', 'osefdeladresse');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `listcompanypresence`
+-- Table structure for table `listcompanypresence`
 --
 
 CREATE TABLE `listcompanypresence` (
@@ -61,12 +63,12 @@ CREATE TABLE `listcompanypresence` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `listcompanypresence`
+-- Dumping data for table `listcompanypresence`
 --
 
 INSERT INTO `listcompanypresence` (`idCompany`, `nameCompany`, `Present`) VALUES
 (1, 'Carrefour', 1),
-(2, 'Intermarche', 0),
+(2, 'Intermarche', 1),
 (3, 'Apple', 1),
 (4, 'Microsoft', 1),
 (5, 'Microsoft', 0);
@@ -74,7 +76,7 @@ INSERT INTO `listcompanypresence` (`idCompany`, `nameCompany`, `Present`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `listpresence`
+-- Table structure for table `listpresence`
 --
 
 CREATE TABLE `listpresence` (
@@ -86,16 +88,59 @@ CREATE TABLE `listpresence` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `listpresence`
+-- Dumping data for table `listpresence`
 --
 
 INSERT INTO `listpresence` (`idCompany`, `nameCompany`, `lol`, `lolilol`, `bjr`) VALUES
-(1, 'Carrefour', 'test', 'hehe', '');
+(1, 'Carrefour', 'test10', 'hehe', ''),
+(5, 'Microsoft', '', '', ''),
+(6, 'GregCompany', 'test', '', ''),
+(7, 'GregCompany', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `sector`
+-- Table structure for table `listtestmail`
+--
+
+CREATE TABLE `listtestmail` (
+  `idCompany` int(10) NOT NULL,
+  `nameCompany` varchar(77) NOT NULL,
+  `osef` varchar(77) NOT NULL,
+  `osef2` varchar(77) NOT NULL,
+  `osef3` varchar(77) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `listtestmail`
+--
+
+INSERT INTO `listtestmail` (`idCompany`, `nameCompany`, `osef`, `osef2`, `osef3`) VALUES
+(6, 'GregCompany', 'hehe', '', ''),
+(7, 'GregCompany', 'test', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manager_list`
+--
+
+CREATE TABLE `manager_list` (
+  `id` int(10) NOT NULL,
+  `name` varchar(77) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `manager_list`
+--
+
+INSERT INTO `manager_list` (`id`, `name`) VALUES
+(1, 'listcompanypresence');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sector`
 --
 
 CREATE TABLE `sector` (
@@ -104,13 +149,33 @@ CREATE TABLE `sector` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `sector`
+-- Dumping data for table `sector`
 --
 
 INSERT INTO `sector` (`id`, `name`) VALUES
 (1, 'Information technology'),
 (2, 'Accounting'),
 (3, 'Retail');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(10) NOT NULL,
+  `name` varchar(77) NOT NULL,
+  `email` varchar(77) NOT NULL,
+  `signature` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `signature`) VALUES
+(1, 'Gregory Brugnet', 'gregory.brugnet@gmail.com', 'Gregory Brugnet\r\nTrainee');
 
 --
 -- Indexes for dumped tables
@@ -142,9 +207,29 @@ ALTER TABLE `listpresence`
   ADD KEY `idCompany` (`idCompany`,`nameCompany`);
 
 --
+-- Indexes for table `listtestmail`
+--
+ALTER TABLE `listtestmail`
+  ADD PRIMARY KEY (`idCompany`,`nameCompany`),
+  ADD KEY `nameCompany` (`nameCompany`),
+  ADD KEY `idCompany` (`idCompany`,`nameCompany`);
+
+--
+-- Indexes for table `manager_list`
+--
+ALTER TABLE `manager_list`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sector`
 --
 ALTER TABLE `sector`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -155,7 +240,13 @@ ALTER TABLE `sector`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `manager_list`
+--
+ALTER TABLE `manager_list`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sector`
@@ -164,26 +255,38 @@ ALTER TABLE `sector`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `company`
+-- Constraints for table `company`
 --
 ALTER TABLE `company`
   ADD CONSTRAINT `company_ibfk_1` FOREIGN KEY (`idSector`) REFERENCES `sector` (`id`);
 
 --
--- Limitadores para a tabela `listcompanypresence`
+-- Constraints for table `listcompanypresence`
 --
 ALTER TABLE `listcompanypresence`
   ADD CONSTRAINT `listcompanypresence_ibfk_2` FOREIGN KEY (`idCompany`,`nameCompany`) REFERENCES `company` (`id`, `name`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `listpresence`
+-- Constraints for table `listpresence`
 --
 ALTER TABLE `listpresence`
   ADD CONSTRAINT `presence_ibfk_2` FOREIGN KEY (`idCompany`,`nameCompany`) REFERENCES `company` (`id`, `name`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `listtestmail`
+--
+ALTER TABLE `listtestmail`
+  ADD CONSTRAINT `testmail_ibfk_2` FOREIGN KEY (`idCompany`,`nameCompany`) REFERENCES `company` (`id`, `name`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
