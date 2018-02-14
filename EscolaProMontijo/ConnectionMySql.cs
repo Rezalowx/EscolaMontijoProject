@@ -262,6 +262,27 @@ namespace EscolaProMontijo
 
 
         }
+        public void createNewSector(string name)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+
+            string sqlQuery = "INSERT INTO sector (name) VALUES ('" + name + "');";
+
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+
+        }
+        public void deleteSector(string name)
+        {
+            MySqlConnection con = ConnectionMySql();
+            con.Open();
+
+            string sqlQuery = "DELETE from sector where name ='" + name + "'";
+
+            var command = new MySqlCommand(sqlQuery, con);
+            command.ExecuteNonQuery();
+        }
         /// <summary>
         /// Insert into user in the database.
         /// </summary>

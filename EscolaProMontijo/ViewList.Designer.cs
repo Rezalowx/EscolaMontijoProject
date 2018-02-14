@@ -71,7 +71,7 @@
             this.dataGridViewList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewList.Location = new System.Drawing.Point(56, 154);
             this.dataGridViewList.Name = "dataGridViewList";
-            this.dataGridViewList.Size = new System.Drawing.Size(1248, 573);
+            this.dataGridViewList.Size = new System.Drawing.Size(1248, 506);
             this.dataGridViewList.TabIndex = 2;
             this.dataGridViewList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewList_CellContentClick);
             // 
@@ -164,8 +164,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1377, 739);
+            this.ClientSize = new System.Drawing.Size(1330, 682);
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.comboBoxEmail);
             this.Controls.Add(this.buttonDeleteCompany);

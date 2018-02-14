@@ -33,6 +33,7 @@ namespace EscolaProMontijo
         {
             this.Height = Screen.PrimaryScreen.WorkingArea.Height;      
             this.Width = Screen.PrimaryScreen.WorkingArea.Width;
+            
             dataGridViewList.DataSource = bindingSourceList;
             
             try
@@ -384,7 +385,8 @@ namespace EscolaProMontijo
 
         private void sectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            sector sector = new sector();
+            sector.ShowDialog();
         }
     }
 }
