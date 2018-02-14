@@ -96,6 +96,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sector.Designer.cs">
+      <DependentUpon>sector.cs</DependentUpon>
+    </Compile>
     <Compile Include="SendMails.cs" />
     <Compile Include="ViewList.cs">
       <SubType>Form</SubType>
@@ -133,6 +139,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="sector.resx">
+      <DependentUpon>sector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewList.resx">
       <DependentUpon>ViewList.cs</DependentUpon>
     </EmbeddedResource>

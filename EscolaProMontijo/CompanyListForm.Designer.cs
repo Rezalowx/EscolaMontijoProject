@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.bindingSourceCompanies = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewCompanies = new System.Windows.Forms.DataGridView();
@@ -61,17 +61,17 @@
             // 
             this.dataGridViewCompanies.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewCompanies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCompanies.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCompanies.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCompanies.Location = new System.Drawing.Point(47, 135);
             this.dataGridViewCompanies.Name = "dataGridViewCompanies";
-            this.dataGridViewCompanies.Size = new System.Drawing.Size(1292, 527);
+            this.dataGridViewCompanies.Size = new System.Drawing.Size(1273, 527);
             this.dataGridViewCompanies.TabIndex = 3;
             // 
             // comboBoxSector
@@ -149,8 +149,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1362, 674);
+            this.ClientSize = new System.Drawing.Size(1338, 674);
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.labelCompany);
             this.Controls.Add(this.comboBoxEmail);
@@ -161,6 +162,7 @@
             this.Controls.Add(this.dataGridViewCompanies);
             this.Controls.Add(this.buttonConfirm);
             this.Name = "CompanyListForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CompanyListForm";
             this.Load += new System.EventHandler(this.CompanyListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCompanies)).EndInit();
