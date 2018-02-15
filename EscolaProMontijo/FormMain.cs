@@ -388,5 +388,30 @@ namespace EscolaProMontijo
             sector sector = new sector();
             sector.ShowDialog();
         }
+
+        private void releaseNotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(Application.StartupPath + @"\Release notes.txt");
+            }
+            catch
+            {
+                MessageBox.Show("File does not exist", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+        private void UserDocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(Application.StartupPath + @"\README.pdf");
+            }
+            catch
+            {
+                MessageBox.Show("File does not exist", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

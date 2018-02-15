@@ -1,0 +1,20 @@
+﻿Version 1.0
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+Welcome to the first release.
+This application is new and could be updated.
+
+
+Right now, it features :
+
+- Management of the database (Lists, sectors, companies, users...)
+- Sends emails to the different lists
+- Signature, attachment capabilities
+
+
+
+
+If you encounter a problem, please email me at gregory.brugnet@gmail.com
