@@ -97,13 +97,20 @@ namespace EscolaProMontijo
                 string sqlQuery = "";
                 if (comboBoxSector.Text == "All companies")
                 {
+                    comboBoxCompany.Items.Clear();
+                    sqlQuery = "SELECT DISTINCT name FROM company";
+                    connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxCompany, "name");
+
                     sqlQuery = "SELECT * FROM company";
+
                 }
                 else
                 {
+                    comboBoxCompany.Items.Clear();
                     string parameter = comboBoxSector.Text;
-                    sqlQuery = "SELECT company.* FROM company, sector WHERE company.idSector = sector.id AND sector.name ='" + parameter + "'";
-                    
+                    sqlQuery = "SELECT DISTINCT company.name  FROM company, sector WHERE company.idSector = sector.id AND sector.name ='" + parameter + "'";
+                    connectionDB.PutQueryIntoComboBox(sqlQuery, comboBoxCompany, "name");
+                    sqlQuery = "SELECT company.*  FROM company, sector WHERE company.idSector = sector.id AND sector.name ='" + parameter + "'";
                 }
 
                 dataAdapter = new MySqlDataAdapter(sqlQuery, connectionDB.getMyconnectionString());
