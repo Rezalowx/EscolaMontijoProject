@@ -52,9 +52,9 @@ namespace EscolaProMontijo
         {
 
 
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            SmtpClient client = new SmtpClient("mail.epmontijo.edu.pt", 587);
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
+            //client.UseDefaultCredentials = false;
             MailMessage MyMsg = new MailMessage();
             MyMsg.Priority = MailPriority.High;
             MyMsg.To.Add(new MailAddress(emailTo));
@@ -72,18 +72,19 @@ namespace EscolaProMontijo
             MyMsg.Subject = subject;
             MyMsg.SubjectEncoding = Encoding.UTF8;
             MyMsg.IsBodyHtml = false;
-            MyMsg.From = new MailAddress("gregory.brugnet@gmail.com", "Escola profissional do Montijo");
+            MyMsg.From = new MailAddress("bdepm@epmontijo.edu.pt", "Escola profissional do Montijo");
             MyMsg.BodyEncoding = Encoding.UTF8;
             MyMsg.Body = message+"\n\n" + signature;
-            client.Credentials = new System.Net.NetworkCredential("gregory.brugnet@gmail.com", "password");
+            client.Credentials = new System.Net.NetworkCredential("bdepm@epmontijo.edu.pt", "password");
 
             client.SendCompleted += new
             SendCompletedEventHandler(SendCompletedCallback);
             // The userState can be any object that allows your callback  
             // method to identify this send operation. 
             // For this example, the userToken is a string constant. 
-            
+
             client.SendAsync(MyMsg, progressBarMail);
+            
 
             
             
