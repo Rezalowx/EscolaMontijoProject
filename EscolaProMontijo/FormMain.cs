@@ -109,47 +109,60 @@ namespace EscolaProMontijo
 
             try
             {
-
-                connectionDB.ConnectionMySql();
-
-                string addCompany = comboBoxCompany.Text;
-                string emailCheck = comboBoxEmail.Text;
-                string querysql = "SELECT c.name, c.email, c.numero, c.address FROM company c where name ='" + addCompany + "' AND c.email ='" + emailCheck + "'";
-                List<string[]> ListNewRow = connectionDB.getInfosinStringArrayOfQueryCompany(querysql);
-                bool identicals = false;
-
-                if (dataGridViewList.RowCount == 0)
+                if (string.IsNullOrWhiteSpace(comboBoxCompany.Text) && dataGridViewList.RowCount >0 )
                 {
-                    string sqlQuery = "SELECT company.name, company.email, company.numero, company.address FROM company where company.name ='" + addCompany + "'AND company.email ='" + emailCheck + "'";
-                    connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
+                    MessageBox.Show("Please check the company's name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    
                 }
-
-
                 else
                 {
-                    for (int i = 0; i < dataGridViewList.Rows.Count - 1; i++)
+
+
+                    connectionDB.ConnectionMySql();
+
+                    string addCompany = comboBoxCompany.Text;
+                    string emailCheck = comboBoxEmail.Text;
+                    string querysql = "SELECT c.name, c.email, c.numero, c.address FROM company c where name ='" + addCompany + "' AND c.email ='" + emailCheck + "'";
+                    List<string[]> ListNewRow = connectionDB.getInfosinStringArrayOfQueryCompany(querysql);
+                    bool identicals = false;
+
+                    if (dataGridViewList.RowCount == 0)
                     {
-                        
-                        string emailtocheck = dataGridViewList.Rows[i].Cells[1].Value.ToString();
-                        if (emailtocheck == ListNewRow[0][1])
+                        string sqlQuery = "SELECT company.name, company.email, company.numero, company.address FROM company where company.name ='" + addCompany + "'AND company.email ='" + emailCheck + "'";
+                        connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
+                    }
+
+
+                    else
+                    {
+                        for (int i = 0; i < dataGridViewList.Rows.Count - 1; i++)
                         {
-                            MessageBox.Show("2 emails are identicals, check it please");
-                            identicals = true;
-                            break;
 
+                            string emailtocheck = dataGridViewList.Rows[i].Cells[1].Value.ToString();
+                            if (emailtocheck == ListNewRow[0][1])
+                            {
+                                MessageBox.Show("2 emails are identicals, check it please");
+                                identicals = true;
+                                break;
+
+                            }
                         }
-                    }
-                    if (identicals == false)
-                    {
+                        if (identicals == false)
+                        {
 
-                        connectionDB.PutListofStringIntoLastRows(dataGridViewList, bindingSourceList, ListNewRow);
-                    }
+                            connectionDB.PutListofStringIntoLastRows(dataGridViewList, bindingSourceList, ListNewRow);
+                        }
 
+                    }
                 }
             }
             catch (Exception er)
             {
+
+
                 MessageBox.Show(er.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
             }
             
            
@@ -160,7 +173,14 @@ namespace EscolaProMontijo
 
             try
             {
-                connectionDB.DeleteCompanyInDatagridView(comboBoxCompany.Text, comboBoxEmail.Text, dataGridViewList);
+                if (string.IsNullOrWhiteSpace(comboBoxCompany.Text))
+                {
+                    MessageBox.Show("Please check the company's name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    connectionDB.DeleteCompanyInDatagridView(comboBoxCompany.Text, comboBoxEmail.Text, dataGridViewList);
+                }
             }
             catch (Exception er)
             {
