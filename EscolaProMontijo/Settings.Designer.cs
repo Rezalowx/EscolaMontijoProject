@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EscolaProMontijo.Properties {
+namespace EscolaProMontijo {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,13 +25,13 @@ namespace EscolaProMontijo.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Test hehe")]
-        public string Signature {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Setting {
             get {
-                return ((string)(this["Signature"]));
+                return ((string)(this["Setting"]));
             }
             set {
-                this["Signature"] = value;
+                this["Setting"] = value;
             }
         }
     }

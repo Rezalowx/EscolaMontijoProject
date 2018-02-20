@@ -36,6 +36,7 @@
             this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.comboBoxName = new System.Windows.Forms.ComboBox();
             this.buttonDeleteSignature = new System.Windows.Forms.Button();
+            this.checkBoxDefaultSignature = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label2
@@ -117,12 +118,24 @@
             this.buttonDeleteSignature.UseVisualStyleBackColor = true;
             this.buttonDeleteSignature.Click += new System.EventHandler(this.buttonDeleteSignature_Click);
             // 
+            // checkBoxDefaultSignature
+            // 
+            this.checkBoxDefaultSignature.AutoSize = true;
+            this.checkBoxDefaultSignature.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxDefaultSignature.Location = new System.Drawing.Point(419, 379);
+            this.checkBoxDefaultSignature.Name = "checkBoxDefaultSignature";
+            this.checkBoxDefaultSignature.Size = new System.Drawing.Size(140, 20);
+            this.checkBoxDefaultSignature.TabIndex = 16;
+            this.checkBoxDefaultSignature.Text = "Default signature";
+            this.checkBoxDefaultSignature.UseVisualStyleBackColor = true;
+            // 
             // ModifyASignature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(823, 446);
+            this.Controls.Add(this.checkBoxDefaultSignature);
             this.Controls.Add(this.buttonDeleteSignature);
             this.Controls.Add(this.comboBoxName);
             this.Controls.Add(this.label2);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.Button buttonSaveChanges;
         private System.Windows.Forms.ComboBox comboBoxName;
         private System.Windows.Forms.Button buttonDeleteSignature;
+        private System.Windows.Forms.CheckBox checkBoxDefaultSignature;
     }
 }

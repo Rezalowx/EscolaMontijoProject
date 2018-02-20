@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Configuration;
+
 
 
 namespace EscolaProMontijo
@@ -62,7 +64,10 @@ namespace EscolaProMontijo
                 comboBoxSignature.Items.Clear();
                 sqlCommand = "SELECT name FROM user";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxSignature, "name");
-                comboBoxSignature.Text = comboBoxSignature.Items[0].ToString();
+                //comboBoxSignature.Text = comboBoxSignature.Items[0].ToString();
+                //comboBoxSignature.Text = ConfigurationManager.AppSettings["name"].ToString();
+                comboBoxSignature.Text = Properties.Settings.Default.Signature;
+
 
                 comboBoxEmail.Visible = false;
 
