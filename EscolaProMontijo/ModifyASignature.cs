@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace EscolaProMontijo
 {
@@ -35,6 +36,7 @@ namespace EscolaProMontijo
 
         private void comboBoxName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            checkBoxDefaultSignature.Checked = false;
             string sqlQuery = "SELECT email FROM user WHERE name='"+comboBoxName.Text+"'";
             connectionDB.PutQueryIntoTextBox(sqlQuery, textBoxEmail, "email");
 
@@ -43,6 +45,11 @@ namespace EscolaProMontijo
 
             sqlQuery = "SELECT id FROM user WHERE name = '" + comboBoxName.Text + "'";
             idUser = connectionDB.getUserId(comboBoxName.Text);                         // Get the id of the user (in order to update later)
+
+            if (comboBoxName.Text == Properties.Settings.Default.Signature)
+            {
+                checkBoxDefaultSignature.Checked=true;
+            }
             
         }
 
@@ -57,13 +64,20 @@ namespace EscolaProMontijo
                 if (result == DialogResult.OK)
                 {
                     connectionDB.modifySignature(comboBoxName.Text, textBoxEmail.Text, textBoxSignature.Text, idUser);  // Update database
+                    if(checkBoxDefaultSignature.Checked == true)
+                    {
+                        
+                        Properties.Settings.Default.Signature = comboBoxName.Text;
+                        Properties.Settings.Default.Save();                                     // Set the new default signature                  
+                    }
                     MessageBox.Show("Signature updated successfully !");
                 }
 
             }
-            catch
+            catch (Exception er)
             {
                 MessageBox.Show("Error : couldn't update the database");
+                MessageBox.Show(er.ToString());
             }
         }
 
