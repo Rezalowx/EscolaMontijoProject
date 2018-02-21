@@ -9,7 +9,7 @@ namespace EscolaProMontijo
 {
     class connectionMySql
     {
-        private string MyconnectionString = "Server=127.0.0.1;Database=bddmontijotest;Uid=root;Pwd="; // credentials
+        private string MyconnectionString = "Server=127.0.0.1;Database=dbepm;Uid=root;Pwd="; // credentials
 
         /// <summary>
         /// Connect to the database
@@ -254,14 +254,18 @@ namespace EscolaProMontijo
         {
             MySqlConnection con = ConnectionMySql();
             con.Open();
-            
-            string sqlQuery = "UPDATE `user` SET `name` ='"+name+"', `email` = '"+email+"', `signature` = '"+signature+"' WHERE `user`.`id` = "+idUser+";";
+
+            string sqlQuery = "UPDATE `user` SET `name` ='" + name + "', `email` = '" + email + "', `signature` = '" + signature + "' WHERE `user`.`id` = " + idUser + ";";
 
             var command = new MySqlCommand(sqlQuery, con);
             command.ExecuteNonQuery();
 
 
         }
+        /// <summary>
+        /// Create a new sector in the database
+        /// </summary>
+        /// <param name="name">Sector's name</param>
         public void createNewSector(string name)
         {
             MySqlConnection con = ConnectionMySql();
@@ -273,6 +277,11 @@ namespace EscolaProMontijo
             command.ExecuteNonQuery();
 
         }
+
+        /// <summary>
+        /// Delete a sector in the database
+        /// </summary>
+        /// <param name="name">Sector's name</param>
         public void deleteSector(string name)
         {
             MySqlConnection con = ConnectionMySql();

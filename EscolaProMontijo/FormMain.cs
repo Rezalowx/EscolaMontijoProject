@@ -48,7 +48,7 @@ namespace EscolaProMontijo
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                 comboBoxChooseList.Items.Clear();
-                string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
+                string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'dbepm' AND TABLE_NAME LIKE 'list%'";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxChooseList, "available");
                 
 
