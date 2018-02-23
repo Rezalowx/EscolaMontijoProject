@@ -340,13 +340,14 @@ namespace EscolaProMontijo
 
                             SendMails sendmail = new SendMails();
                             sendmail.sendAMail(message, emailFrom, dataGridViewList.Rows[row].Cells[1].Value.ToString(), subject, signature, allAttachments, progressBarSendingMail); //Sending mail and updating progressBar
-
+                            
 
                         }
 
                         allAttachments.Clear();
                         textBoxBrowse.Text = null;
                         pictureBoxCancelBrowse.Visible = false;
+                       
                     }
                     else
                     {
