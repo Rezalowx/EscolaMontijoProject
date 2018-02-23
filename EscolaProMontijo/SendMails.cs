@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.IO;
 namespace EscolaProMontijo
 {
     class SendMails
@@ -69,13 +70,18 @@ namespace EscolaProMontijo
                 }
 
             }
+            MessageBox.Show(signature);
             MyMsg.Subject = subject;
             MyMsg.SubjectEncoding = Encoding.UTF8;
-            MyMsg.IsBodyHtml = false;
+            MyMsg.IsBodyHtml = true;
+           
             MyMsg.From = new MailAddress("bdepm@epmontijo.edu.pt", "Escola profissional do Montijo");
             MyMsg.BodyEncoding = Encoding.UTF8;
-            MyMsg.Body = message+"\n\n" + signature;
+            MyMsg.Body = message.Replace(Environment.NewLine, "<br />") + "<br /><br />" + File.ReadAllText(signature);
+            
+
             client.Credentials = new System.Net.NetworkCredential("bdepm@epmontijo.edu.pt", "password");
+            
 
             client.SendCompleted += new
             SendCompletedEventHandler(SendCompletedCallback);
