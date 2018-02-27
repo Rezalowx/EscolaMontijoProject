@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net.Mail;
-using System.Net.Mime;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.IO;
@@ -32,14 +29,14 @@ namespace EscolaProMontijo
             }
             else
             {
-
+               
                 token.PerformStep();
                    
             }
             
         }
-        
-       
+
+
         /// <summary>
         /// Send async email
         /// </summary>
@@ -60,24 +57,30 @@ namespace EscolaProMontijo
             MyMsg.Priority = MailPriority.High;
             MyMsg.To.Add(new MailAddress(emailTo));
             client.EnableSsl = true;
-            if (attachment.Count !=0)
+            if (attachment.Count != 0)
             {
-                
+
                 foreach (string attachmentsInList in attachment)
                 {
-
                     MyMsg.Attachments.Add(new Attachment(attachmentsInList));
                 }
 
             }
-            MessageBox.Show(signature);
+
             MyMsg.Subject = subject;
             MyMsg.SubjectEncoding = Encoding.UTF8;
             MyMsg.IsBodyHtml = true;
-           
+
             MyMsg.From = new MailAddress("bdepm@epmontijo.edu.pt", "Escola profissional do Montijo");
             MyMsg.BodyEncoding = Encoding.UTF8;
-            MyMsg.Body = message.Replace(Environment.NewLine, "<br />") + "<br /><br />" + File.ReadAllText(signature);
+            if (File.Exists(@"C:\Users\user\AppData\Roaming\Microsoft\Signatures\" + signature))
+            {
+                MyMsg.Body = message.Replace(Environment.NewLine, "<br />") + "<br /><br />" + File.ReadAllText(@"C:\Users\user\AppData\Roaming\Microsoft\Signatures\"+signature);
+            }
+            else
+            {
+                MyMsg.Body = message.Replace(Environment.NewLine, "<br />") + "<br /><br />" + signature;
+            }
             
 
             client.Credentials = new System.Net.NetworkCredential("bdepm@epmontijo.edu.pt", "password");
