@@ -119,6 +119,7 @@
             this.Name = "Create_a_signature";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create_a_signature";
+            this.Load += new System.EventHandler(this.Create_a_signature_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
