@@ -9,7 +9,7 @@ namespace EscolaProMontijo
 {
     class connectionMySql
     {
-        private string MyconnectionString = "Server=127.0.0.1;Database=dbepm;Uid=root;Pwd="; // credentials
+        private string MyconnectionString = "Server=127.0.0.1;Database=dbepm;Uid=root;Pwd=pw"; // credentials
 
         /// <summary>
         /// Connect to the database
@@ -250,12 +250,12 @@ namespace EscolaProMontijo
         /// <param name="email">string you want in the column email</param>
         /// <param name="signature">string you want in the column signature</param>
         /// <param name="idUser">string you need to know which user you are updating</param>
-        public void modifySignature(string name, string email, string signature, string idUser)
+        public void modifySignature(string name, string signature, string idUser)
         {
             MySqlConnection con = ConnectionMySql();
             con.Open();
 
-            string sqlQuery = "UPDATE `user` SET `name` ='" + name + "', `email` = '" + email + "', `signature` = '" + signature + "' WHERE `user`.`id` = " + idUser + ";";
+            string sqlQuery = "UPDATE `user` SET `name` ='" + name + "', `signature` = '" + signature + "' WHERE `user`.`id` = " + idUser + ";";
 
             var command = new MySqlCommand(sqlQuery, con);
             command.ExecuteNonQuery();
@@ -298,12 +298,12 @@ namespace EscolaProMontijo
         /// <param name="name">string you want in the column name</param>
         /// <param name="email">string you want in the column email</param>
         /// <param name="signature">string you want in the the column signature</param>
-        public void createNewSignature(string name, string email, string signature)
+        public void createNewSignature(string name, string signature)
         {
             MySqlConnection con = ConnectionMySql();
             con.Open();
 
-            string sqlQuery = "INSERT INTO user (name, email, signature) VALUES ( '" + name + "' , '" + email + "' , '" + signature + "');";
+            string sqlQuery = "INSERT INTO user (name, signature) VALUES ( '" + name + "' , '" + signature + "');";
 
             var command = new MySqlCommand(sqlQuery, con);
             command.ExecuteNonQuery();

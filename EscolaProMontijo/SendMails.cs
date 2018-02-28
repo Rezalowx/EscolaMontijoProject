@@ -75,16 +75,16 @@ namespace EscolaProMontijo
             MyMsg.BodyEncoding = Encoding.UTF8;
             if (File.Exists(@"C:\Users\user\AppData\Roaming\Microsoft\Signatures\" + signature))
             {
-                MyMsg.Body = message.Replace(Environment.NewLine, "<br />") + "<br /><br />" + File.ReadAllText(@"C:\Users\user\AppData\Roaming\Microsoft\Signatures\"+signature);
+                MyMsg.Body = message.Replace(Environment.NewLine, "<br />") + "<br /><br />" + File.ReadAllText(@"C:\Users\user\AppData\Roaming\Microsoft\Signatures\"+signature)+ "<br />" + "<img src='https://image.noelshack.com/fichiers/2018/09/3/1519819796-signaturesample.png' alt ='EPM'>";
             }
             else
             {
-                MyMsg.Body = message.Replace(Environment.NewLine, "<br />") + "<br /><br />" + signature;
+                MyMsg.Body = message.Replace(Environment.NewLine, "<br />") + "<br /><br />" + signature.Replace(Environment.NewLine, "<br />") ;
             }
             
 
-            client.Credentials = new System.Net.NetworkCredential("bdepm@epmontijo.edu.pt", "password");
-            
+            client.Credentials = new System.Net.NetworkCredential("bdepm@epmontijo.edu.pt", "pw");
+
 
             client.SendCompleted += new
             SendCompletedEventHandler(SendCompletedCallback);
