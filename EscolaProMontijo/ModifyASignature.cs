@@ -18,7 +18,6 @@ namespace EscolaProMontijo
         {
             comboBoxName.Text = null;
             textBoxSignature.Text = null;
-            textBoxEmail.Text = null;
             comboBoxName.Items.Clear();
 
             string sqlQuery = "SELECT name FROM user";
@@ -29,10 +28,9 @@ namespace EscolaProMontijo
         private void comboBoxName_SelectedIndexChanged(object sender, EventArgs e)
         {
             checkBoxDefaultSignature.Checked = false;
-            string sqlQuery = "SELECT email FROM user WHERE name='"+comboBoxName.Text+"'";
-            connectionDB.PutQueryIntoTextBox(sqlQuery, textBoxEmail, "email");
+            
 
-            sqlQuery = "SELECT signature FROM user WHERE name ='" + comboBoxName.Text + "'";    // Put infos in textboxes
+            string sqlQuery = "SELECT signature FROM user WHERE name ='" + comboBoxName.Text + "'";    // Put infos in textboxes
             connectionDB.PutQueryIntoTextBox(sqlQuery, textBoxSignature, "signature");
 
             sqlQuery = "SELECT id FROM user WHERE name = '" + comboBoxName.Text + "'";
@@ -55,7 +53,7 @@ namespace EscolaProMontijo
 
                 if (result == DialogResult.OK)
                 {
-                    connectionDB.modifySignature(comboBoxName.Text, textBoxEmail.Text, textBoxSignature.Text, idUser);  // Update database
+                    connectionDB.modifySignature(comboBoxName.Text, textBoxSignature.Text, idUser);  // Update database
                     if(checkBoxDefaultSignature.Checked == true)
                     {
                         

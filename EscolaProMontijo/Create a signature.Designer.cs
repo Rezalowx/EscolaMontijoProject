@@ -30,10 +30,8 @@
         {
             this.buttonCreate = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxSignature = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -56,14 +54,6 @@
             this.textBoxName.Size = new System.Drawing.Size(181, 23);
             this.textBoxName.TabIndex = 1;
             // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(399, 72);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(229, 23);
-            this.textBoxEmail.TabIndex = 2;
-            // 
             // textBoxSignature
             // 
             this.textBoxSignature.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -83,16 +73,6 @@
             this.labelName.TabIndex = 4;
             this.labelName.Text = "Name";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(396, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Email";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -110,10 +90,8 @@
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(696, 432);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.textBoxSignature);
-            this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.buttonCreate);
             this.Name = "Create_a_signature";
@@ -129,10 +107,8 @@
 
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.TextBox textBoxSignature;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
 }

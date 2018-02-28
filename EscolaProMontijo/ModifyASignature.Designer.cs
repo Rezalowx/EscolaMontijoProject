@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxSignature = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.comboBoxName = new System.Windows.Forms.ComboBox();
             this.buttonDeleteSignature = new System.Windows.Forms.Button();
@@ -48,16 +46,6 @@
             this.label2.Size = new System.Drawing.Size(71, 16);
             this.label2.TabIndex = 13;
             this.label2.Text = "Signature";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(460, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Email";
             // 
             // labelName
             // 
@@ -77,14 +65,6 @@
             this.textBoxSignature.Name = "textBoxSignature";
             this.textBoxSignature.Size = new System.Drawing.Size(558, 140);
             this.textBoxSignature.TabIndex = 10;
-            // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(463, 106);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(229, 23);
-            this.textBoxEmail.TabIndex = 9;
             // 
             // buttonSaveChanges
             // 
@@ -139,10 +119,8 @@
             this.Controls.Add(this.buttonDeleteSignature);
             this.Controls.Add(this.comboBoxName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.textBoxSignature);
-            this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.buttonSaveChanges);
             this.Name = "ModifyASignature";
             this.Text = "ModifyASignature";
@@ -155,10 +133,8 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxSignature;
-        private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Button buttonSaveChanges;
         private System.Windows.Forms.ComboBox comboBoxName;
         private System.Windows.Forms.Button buttonDeleteSignature;
