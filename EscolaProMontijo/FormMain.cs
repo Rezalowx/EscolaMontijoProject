@@ -36,9 +36,12 @@ namespace EscolaProMontijo
                 
                 connectionDB.ConnectionMySql();
 
-                
+
 
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                //dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                
+
 
                 comboBoxChooseList.Items.Clear();
                 string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'dbepm' AND TABLE_NAME LIKE 'list%'";
@@ -57,8 +60,7 @@ namespace EscolaProMontijo
                 comboBoxSignature.Items.Clear();
                 sqlCommand = "SELECT name FROM user";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxSignature, "name");
-                //comboBoxSignature.Text = comboBoxSignature.Items[0].ToString();
-                //comboBoxSignature.Text = ConfigurationManager.AppSettings["name"].ToString();
+               
                 comboBoxSignature.Text = Properties.Settings.Default.Signature;
 
 
@@ -128,6 +130,7 @@ namespace EscolaProMontijo
                     {
                         string sqlQuery = "SELECT company.name, company.email, company.numero, company.address FROM company where company.name ='" + addCompany + "'AND company.email ='" + emailCheck + "'";
                         connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
+                        
                     }
 
 
@@ -149,9 +152,12 @@ namespace EscolaProMontijo
                         {
 
                             connectionDB.PutListofStringIntoLastRows(dataGridViewList, bindingSourceList, ListNewRow);
+                            
                         }
 
                     }
+
+                    dataGridViewList.AutoResizeColumns();
                 }
             }
             catch (Exception er)
@@ -185,6 +191,8 @@ namespace EscolaProMontijo
                 MessageBox.Show(er.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            dataGridViewList.AutoResizeColumns();
+
         }
 
 
@@ -201,6 +209,8 @@ namespace EscolaProMontijo
             connectionDB.getData(sqlQuery, dataGridViewList, bindingSourceList);
             dataGridViewList.Columns.Remove("nameCompany");
             dataGridViewList.Columns.Remove("idCompany");
+            dataGridViewList.AutoResizeColumns();
+            
         }
 
   

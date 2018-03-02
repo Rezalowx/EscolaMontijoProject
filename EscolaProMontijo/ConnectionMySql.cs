@@ -9,7 +9,7 @@ namespace EscolaProMontijo
 {
     class connectionMySql
     {
-        private string MyconnectionString = "Server=127.0.0.1;Database=dbepm;Uid=root;Pwd=pw"; // credentials
+        private string MyconnectionString = "Server=127.0.0.1;Database=dbepm;Uid=root;Pwd="; // credentials
 
         /// <summary>
         /// Connect to the database
@@ -125,7 +125,7 @@ namespace EscolaProMontijo
                 
                 if (columns[i] != "")
                 {
-                    sqlQuery = "ALTER TABLE `list" + nameOfList + "` ADD `" + columns[i] + "` VARCHAR(77) NOT NULL; ";
+                    sqlQuery = "ALTER TABLE `list" + nameOfList + "` ADD `" + columns[i] + "` VARCHAR(77) NULL; ";
                     command = new MySqlCommand(sqlQuery, con);
                     command.ExecuteNonQuery();
 

@@ -31,7 +31,7 @@ namespace EscolaProMontijo
 
                 dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'bddmontijotest' AND TABLE_NAME LIKE 'list%'";
+                string sqlCommand = "SELECT TABLE_NAME as available FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'dbepm' AND TABLE_NAME LIKE 'list%'";
                 connectionDB.PutQueryIntoComboBox(sqlCommand, comboBoxList, "available");  // Use method to add the query to the comboBoxList
 
                 
@@ -54,8 +54,8 @@ namespace EscolaProMontijo
 
             if (dataGridViewList.ColumnCount != 0) 
             {
-                ds.Tables["bddmontijotest"].Columns.Clear();   // Clear column of database
-                ds.Tables["bddmontijotest"].Rows.Clear(); // Clear Rows of database
+                ds.Tables["dbepm"].Columns.Clear();   // Clear column of database
+                ds.Tables["dbepm"].Rows.Clear(); // Clear Rows of database
                 
             }
 
@@ -66,9 +66,9 @@ namespace EscolaProMontijo
                 dataAdapter = new MySqlDataAdapter(sqlCommand, connectionDB.getMyconnectionString()); 
                 // 3. fill in insert, update, and delete commands
                 MySqlCommandBuilder cmdBldr = new MySqlCommandBuilder(dataAdapter);
-                dataAdapter.Fill(ds, "bddmontijotest"); 
+                dataAdapter.Fill(ds, "dbepm"); 
                 dataGridViewList.DataSource = ds;                                       // Fill the dataGridViewList
-                dataGridViewList.DataMember = "bddmontijotest";
+                dataGridViewList.DataMember = "dbepm";
 
                 
 
@@ -86,7 +86,7 @@ namespace EscolaProMontijo
         {
             try
             {
-                dataAdapter.Update(ds, "bddmontijotest");                 // Save the changes and update the database
+                dataAdapter.Update(ds, "dbepm");                 // Save the changes and update the database
                 MessageBox.Show("Database updated");
                 comboBox1_SelectedIndexChanged(sender, e);
             }
@@ -113,7 +113,7 @@ namespace EscolaProMontijo
                 {
                     connectionDB.deleteList(comboBoxList.Text);       // Use method to delete the list from database
                     MessageBox.Show("List deleted successfully");
-                    comboBoxList.Text = null;
+                    
    
                 }
                 ViewList_Load(null, null);
@@ -153,9 +153,10 @@ namespace EscolaProMontijo
                 connectionDB.addCompanyToList(comboBoxCompany.Text, comboBoxEmail.Text, comboBoxList.Text); // Use method to add a company in the list
                 comboBox1_SelectedIndexChanged(null, null);
             }
-            catch
+            catch (Exception er)
             {
                 MessageBox.Show("Error, the list is not updated", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(er.ToString());
 
             }
 
