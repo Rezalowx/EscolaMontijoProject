@@ -83,7 +83,7 @@ namespace EscolaProMontijo
             }
             
 
-            client.Credentials = new System.Net.NetworkCredential("bdepm@epmontijo.edu.pt", "pw");
+            client.Credentials = new System.Net.NetworkCredential("bdepm@epmontijo.edu.pt", "");
 
 
             client.SendCompleted += new
