@@ -1,0 +1,11 @@
+How to implement the project 
+
+Requirements :
+MySQL server working on a server.
+
+How to connect the application :
+Open the class "ConnectionMySql.cs" in the project named "EscolaProMontijo" in Visual Studio.
+See the path : C:\Users\user\Source\Repos\EscolaMontijoProject\EscolaProMontijo\ConnectionMySql.cs
+Line 12 : Modify credentials so it connects to the right MySql server.
+
+Then, use the application from : C:\Users\user\Source\Repos\EscolaMontijoProject\EscolaProMontijo\bin\Release
